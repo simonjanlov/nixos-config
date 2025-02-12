@@ -8,7 +8,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./gnome.nix
+      <home-manager/nixos>
     ];
+
+  simon.gnome.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -24,13 +28,9 @@
     alsa.support32Bit = true;
   };
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   hardware.graphics.enable = true;
-  hardware.graphics.extraPackages =
-    [
-      pkgs.intel-media-driver
-    ];
   hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "simon-nixos"; # Define your hostname.
@@ -54,31 +54,13 @@
   # useXkbConfig = true; # use xkb.options in tty.
   };
 
+  nix.settings = {
+    cores = 0;
+    experimental-features = [ "nix-command" "flakes" ];
+    builders-use-substitutes = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -94,11 +76,29 @@
   # };
 
   users.users.simon = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "flatpak" "networkmanager" "video" "lp" "scanner" ];
-      uid = 1000;
-      initialPassword = "asdfasdf";
+    isNormalUser = true;
+    extraGroups = [ "wheel" "flatpak" "networkmanager" "video" "lp" "scanner" ];
+    uid = 1000;
+    initialPassword = "asdfasdf";
+  };
+
+  home-manager.users.simon = {
+    home.sessionVariables = {
+      EDITOR = "emacs";
     };
+
+    # dconf.settings = {
+    # };
+
+    home.file.".myconfig".text = ''
+      # This is my custom config file
+      export SIMON_MY_VARIABLE="Hello, Home Manager!"
+    '';
+
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "24.11";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -133,21 +133,16 @@
       gocryptfs
       signing-party
       msmtp
-      direnv
       dnsutils
       bat
       unzip
+      parted
       jq
       cpufrequtils
       delta
       duf
-      vscode
-      firefox-wayland
-      foot
-      slack
-      bitwarden
       emacs29-pgtk
-      gnome-tweaks
+      ncdu
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -157,6 +152,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.direnv.enable = true;
 
   # List services that you want to enable:
 
@@ -195,14 +192,6 @@
     enable = true;
     drivers = with pkgs; [
       hplipWithPlugin
-      postscript-lexmark
-      canon-cups-ufr2
-      carps-cups
-      cnijfilter2
-      cnijfilter_2_80
-      cnijfilter_4_00
-      cups-bjnp
-      gutenprintBin
     ];
   };
 
