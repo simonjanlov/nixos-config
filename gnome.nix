@@ -1,5 +1,11 @@
 { config, lib, pkgs, ... }:
 
+let
+  cfg = config.simon.gnome;
+  inherit (lib)
+    mkMerge
+    mkIf;
+in
 {
   options.simon.gnome =
     {
@@ -7,12 +13,19 @@
         default = false;
         example = true;
         description = ''
-          Whether to enable the gnome desktop.
+        Whether to enable the gnome desktop.
+        '';
+      };
+      custom-keys = lib.mkOption {
+        default = true;
+        example = false;
+        description = ''
+        Whether to enable the custom shortcuts.
         '';
       };
     };
 
-  config = lib.mkIf config.simon.gnome.enable
+  config = mkIf cfg.enable
     {
       environment.systemPackages = with pkgs;
         [
@@ -42,6 +55,42 @@
       services.xserver.xkb.layout = "se";
       services.xserver.xkb.options = "eurosign:e,ctrl:nocaps";
 
-    };
+      home-manager.users.simon = {
 
+        dconf.settings = mkMerge [
+          (mkIf cfg.custom-keys {
+            "org/gnome/settings-daemon/plugins/media-keys" = {
+              custom-keybindings = [
+                "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+                "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+              ];
+            };
+
+            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+              name = "emacsclient";
+              binding = "<Super>e";
+              command = "emacs";
+            };
+
+            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+              name = "terminal";
+              binding = "<Super>t";
+              command = "foot";
+            };
+          })
+
+          {
+            "org/gnome/shell" = {
+              disabled-extensions = [];
+              enabled-extensions = [
+                "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+                "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
+              ];
+
+              favorite-apps = [ "org.gnome.Nautilus.desktop" ];
+            };
+          }
+        ];
+      };
+    };
 }

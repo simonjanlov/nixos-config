@@ -14,6 +14,8 @@
 
   simon.gnome.enable = true;
 
+  # simon.gnome.custom-keys = false;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -62,18 +64,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     tree
-  #   ];
-  # };
 
   users.users.simon = {
     isNormalUser = true;
@@ -82,67 +72,72 @@
     initialPassword = "asdfasdf";
   };
 
-  home-manager.users.simon = {
-    home.sessionVariables = {
-      EDITOR = "emacs";
-    };
+  # Use the global nixpkgs options as opposed to home-manager specific nixpkgs
+  home-manager.useGlobalPkgs = true;
 
-    # dconf.settings = {
-    # };
+  # Install via users.users.simon.packages instead of nix-env -i
+  home-manager.useUserPackages = true;
+
+  # On activation, move conflicting files by adding extension instead of exiting with an error
+  home-manager.backupFileExtension = "hm-backup";
+
+  home-manager.users.simon = {
+
+    programs.bash = {
+      enable = true;
+      sessionVariables.EDITOR = "emacs";
+      historyIgnore = [ "ls" "cd" "exit" ];
+    };
 
     home.file.".myconfig".text = ''
       # This is my custom config file
       export SIMON_MY_VARIABLE="Hello, Home Manager!"
-    '';
+      '';
 
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "24.11";
+    home.stateVersion = config.system.stateVersion;
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
 
   environment.systemPackages = with pkgs; [
-      wget
-      gnupg
-      file
-      tree
-      killall
-      git
-      htop
-      fzf
-      fd
-      curl
-      sshfs-fuse
-      exfat
-      pv
-      ripgrep
-      openssh
-      pciutils
-      usbutils
-      screen
-      pwgen
-      heimdal
-      nix-index
-      nixpkgs-review
-      gocryptfs
-      signing-party
-      msmtp
-      dnsutils
-      bat
-      unzip
-      parted
-      jq
-      cpufrequtils
-      delta
-      duf
-      emacs29-pgtk
-      ncdu
+    wget
+    gnupg
+    file
+    tree
+    killall
+    git
+    htop
+    fzf
+    fd
+    curl
+    dconf-editor
+    sshfs-fuse
+    exfat
+    pv
+    ripgrep
+    openssh
+    openssl
+    pciutils
+    usbutils
+    screen
+    pwgen
+    heimdal
+    nix-index
+    nixpkgs-review
+    gocryptfs
+    signing-party
+    msmtp
+    dnsutils
+    bat
+    unzip
+    parted
+    jq
+    cpufrequtils
+    delta
+    duf
+    emacs29-pgtk
+    ncdu
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -205,4 +200,4 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
 
-}
+  }
