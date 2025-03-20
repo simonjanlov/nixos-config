@@ -1319,7 +1319,7 @@
 
 ** Init and config
 
-   #+begin_src emacs-lisp :tangle yes
+   #+begin_src emacs-lisp :tangle no
 
      (use-package weechat
        :ensure t

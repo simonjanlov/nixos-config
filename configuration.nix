@@ -136,7 +136,7 @@
     cpufrequtils
     delta
     duf
-    emacs-pgtk
+    # emacs-pgtk
     ncdu
   ];
 
