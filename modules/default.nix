@@ -5,5 +5,6 @@
     [
       ./gnome.nix
       ./emacs.nix
+      ./cachix.nix
     ];
 }
