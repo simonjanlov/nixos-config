@@ -862,7 +862,7 @@
 
 ** GDB
 
-   #+begin_src emacs-lisp :tangle yes
+   #+begin_src emacs-lisp :tangle no
 
      (use-package gdb-mi
        :config (progn
