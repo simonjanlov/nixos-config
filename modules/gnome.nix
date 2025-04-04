@@ -55,42 +55,53 @@ in
       services.xserver.xkb.layout = "se";
       services.xserver.xkb.options = "eurosign:e,ctrl:nocaps";
 
-      home-manager.users.simon = {
+      home-manager.users.simon = { lib, ... }:
+        {
+          dconf.settings = mkMerge [
+            (mkIf cfg.custom-keys {
+              "org/gnome/settings-daemon/plugins/media-keys" = {
+                custom-keybindings = [
+                  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+                  "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+                ];
+              };
 
-        dconf.settings = mkMerge [
-          (mkIf cfg.custom-keys {
-            "org/gnome/settings-daemon/plugins/media-keys" = {
-              custom-keybindings = [
-                "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-                "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-              ];
-            };
+              "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+                name = "emacsclient";
+                binding = "<Super>e";
+                command = "emacs";
+              };
 
-            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-              name = "emacsclient";
-              binding = "<Super>e";
-              command = "emacs";
-            };
+              "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+                name = "terminal";
+                binding = "<Super>t";
+                command = "foot";
+              };
+            })
 
-            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-              name = "terminal";
-              binding = "<Super>t";
-              command = "foot";
-            };
-          })
+            {
+              "org/gnome/shell" = {
+                disabled-extensions = [];
+                enabled-extensions = [
+                  "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+                  "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
+                ];
+                favorite-apps = [ "org.gnome.Nautilus.desktop" ];
+              };
 
-          {
-            "org/gnome/shell" = {
-              disabled-extensions = [];
-              enabled-extensions = [
-                "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
-                "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
-              ];
-
-              favorite-apps = [ "org.gnome.Nautilus.desktop" ];
-            };
-          }
-        ];
-      };
+              "org/gnome/desktop/input-sources" = {
+                sources = [
+                  (lib.hm.gvariant.mkTuple ["xkb" "se"])
+                  (lib.hm.gvariant.mkTuple ["xkb" "us"])
+                ];
+                xkb-options = [
+                  "terminate:ctrl_alt_bksp"
+                  "lv3:ralt_switch"
+                  "ctrl:nocaps"
+                ];
+              };
+            }
+          ];
+        };
     };
 }

@@ -28,7 +28,9 @@ in
           (pkgs.emacsWithPackagesFromUsePackage {
             config = ./dotfiles/emacs-config.org;
             defaultInitFile = true;
-            package = pkgs.emacs-git-pgtk;
+            package = pkgs.emacs.override {
+              withPgtk = true;
+            };
           })
         ];
 
