@@ -5,8 +5,14 @@
 { config, lib, pkgs, ... }:
 
 {
+  nix.nixPath = [
+    "nixpkgs=/etc/nixos/modules/nixpkgs"
+    "nixos-config=/etc/nixos/configuration.nix"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
+
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./modules
     ];
