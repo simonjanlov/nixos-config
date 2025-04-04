@@ -1,3 +1,10 @@
 [submodule "modules/emacs-overlay"]
 	path = modules/emacs-overlay
 	url = https://github.com/nix-community/emacs-overlay.git
+[submodule "modules/nixpkgs"]
+	path = modules/nixpkgs
+	url = https://github.com/NixOS/nixpkgs.git
+	branch = nixos-unstable
+[submodule "modules/home-manager"]
+	path = modules/home-manager
+	url = https://github.com/nix-community/home-manager.git
