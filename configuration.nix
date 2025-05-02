@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, ... }:
 
 {
@@ -40,10 +36,14 @@
   hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
 
-  networking.hostName = "simon-nixos"; # Define your hostname.
+  networking.hostName = "simon-nixos";
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  services.avahi.enable = true;
+  services.avahi.nssmdns4 = true;
+  services.avahi.nssmdns6 = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
@@ -102,8 +102,6 @@
     home.stateVersion = config.system.stateVersion;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
 
   environment.systemPackages = with pkgs; [
     wget
