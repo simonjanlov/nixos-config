@@ -96,7 +96,7 @@
     };
 
     home.file.".myconfig".text = ''
-      # This is my new custom config file
+      # This is my newest custom config file
       export SIMON_MY_VARIABLE="Hello, Home Manager!"
       '';
 
