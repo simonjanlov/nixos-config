@@ -99,6 +99,8 @@
       ncdu
     ];
 
+    programs.direnv.enable = true;
+
     users.users.${config.simon.username} = {
       isNormalUser = true;
       extraGroups = [ "wheel" "flatpak" "networkmanager" "video" "lp" "scanner" ];

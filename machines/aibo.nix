@@ -16,8 +16,6 @@
 
   simon.gnome.enable = true;
 
-  # simon.gnome.custom-keys = false;
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -42,20 +40,6 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-
-
-
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  programs.direnv.enable = true;
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -71,7 +55,6 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   system.copySystemConfiguration = true;
-
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -130,5 +113,4 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-
-  }
+}
