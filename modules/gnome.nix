@@ -38,7 +38,6 @@ in
           gnome-tweaks
           spotify
           gimp
-          sticky-notes
         ];
 
 
