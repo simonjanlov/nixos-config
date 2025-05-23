@@ -39,6 +39,7 @@ in
           spotify
           gimp
           sticky-notes
+          gnomeExtensions.paperwm
         ];
 
 
@@ -85,6 +86,7 @@ in
                 enabled-extensions = [
                   "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
                   "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
+                  "paperwm@paperwm.github.com"
                 ];
                 favorite-apps = [ "org.gnome.Nautilus.desktop" ];
               };
