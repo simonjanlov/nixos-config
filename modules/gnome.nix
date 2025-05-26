@@ -88,6 +88,32 @@ in
                 favorite-apps = [ "org.gnome.Nautilus.desktop" ];
               };
 
+              "org/gnome/desktop/interface" = {
+                color-scheme = "prefer-dark";
+                enable-hot-corners = false;
+                show-battery-percentage= true;
+              };
+
+              "org/gnome/desktop/peripherals/mouse" = {
+                accel-profile = "default";
+                natural-scroll = false;
+                speed = 0.7682170542635659;
+              };
+
+              "org/gnome/desktop/peripherals/touchpad" = {
+                disable-while-typing = true;
+                natural-scroll = false;
+                speed = 0.4496124031007751;
+                tap-to-click = false;
+                two-finger-scrolling-enabled = true;
+              };
+
+              "org/gnome/nautilus/preferences" = {
+                default-folder-viewer = "list-view";
+                migrated-gtk-settings = true;
+                search-filter-time-type = "last_modified";
+              };
+
               "org/gnome/desktop/input-sources" = {
                 sources = [
                   (lib.hm.gvariant.mkTuple ["xkb" "se"])
