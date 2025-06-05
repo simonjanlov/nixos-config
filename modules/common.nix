@@ -53,7 +53,7 @@
       };
 
       home.file.".myconfig".text = ''
-      # This is a custom config file
+      # This is a hej custom config file
       export SIMON_MY_VARIABLE="Hello, Home Manager!"
       '';
 
