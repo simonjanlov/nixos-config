@@ -8,3 +8,7 @@
 [submodule "modules/home-manager"]
 	path = modules/home-manager
 	url = https://github.com/nix-community/home-manager.git
+[submodule "modules/nixpkgs-stable"]
+	path = modules/nixpkgs-stable
+	url = https://github.com/NixOS/nixpkgs.git
+	branch = nixos-25.05
