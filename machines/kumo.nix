@@ -37,6 +37,32 @@
   hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "kumo";
+  networking.useDHCP = false;
+
+  systemd.network.enable = true;
+  systemd.network.networks."wired" = {
+    enable = true;
+    matchConfig.Name = "enp8s0";
+    DHCP = "no";
+    address = [ "192.168.1.3/24" ];
+    gateway = [ "192.168.1.1" ];
+  };
+
+  services.resolved.enable = true;
+  services.resolved.extraConfig = ''
+    DNS=192.168.1.1
+  '';
+
+  networking.networkmanager.enable = false;
+
+  networking.firewall = {
+    enable = true;
+    allowPing = true;
+  };
+
+
+
+
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -73,6 +99,32 @@
   system.stateVersion = "24.11";
 
 
+
+
+
+  # --- Keep Server Awake Configuration ---
+
+  # 1. Configure logind to ignore all sleep-related events
+  # services.logind = {
+  #   idleAction = "ignore";
+  #   handlePowerKey = "ignore";
+  #   handleSuspendKey = "ignore";
+  #   handleHibernateKey = "ignore";
+  #   handleLidSwitch = "ignore";
+  #   handleLidSwitchExternalPower = "ignore";
+  #   handleLidSwitchDocked = "ignore";
+  # };
+
+  # 2. Disable systemd's power-saving targets entirely
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    hybrid-sleep.enable = false;
+  };
+
+
+
   ### Hardware-configuration ###
 
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/082e9a9b-bac9-434f-9795-c456dd1935c5";
@@ -80,7 +132,8 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "uas" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "r8169" ];
 
-  boot.kernelParams = [ "ip=dhcp" ];
+  # boot.kernelParams = [ "ip=dhcp" ];
+  boot.kernelParams = [ "ip=192.168.1.3::192.168.1.1:255.255.255.0:kumo::none" ];
   boot.initrd.network = {
     enable = true;
     ssh.enable = true;
@@ -90,8 +143,8 @@
     ];
   };
 
-  networking.useDHCP = false;
-  networking.networkmanager.enable = false;
+  # networking.useDHCP = false;
+  # networking.networkmanager.enable = false;
 
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
