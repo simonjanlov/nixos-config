@@ -60,18 +60,15 @@
     allowPing = true;
   };
 
+  # services.ddclient.enable = true;
+
+  services.ddclient = {
+    enable = true;
+    configFile = "/etc/secrets/ddclient.conf";
+  };
 
 
 
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-  # services.openssh.settings.PasswordAuthentication = false;
 
   services.openssh = {
     enable = true;
@@ -81,12 +78,6 @@
      PermitRootLogin = "prohibit-password";
     };
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -98,24 +89,7 @@
 
   system.stateVersion = "24.11";
 
-
-
-
-
-  # --- Keep Server Awake Configuration ---
-
-  # 1. Configure logind to ignore all sleep-related events
-  # services.logind = {
-  #   idleAction = "ignore";
-  #   handlePowerKey = "ignore";
-  #   handleSuspendKey = "ignore";
-  #   handleHibernateKey = "ignore";
-  #   handleLidSwitch = "ignore";
-  #   handleLidSwitchExternalPower = "ignore";
-  #   handleLidSwitchDocked = "ignore";
-  # };
-
-  # 2. Disable systemd's power-saving targets entirely
+  # Disable systemd's power-saving targets
   systemd.targets = {
     sleep.enable = false;
     suspend.enable = false;
