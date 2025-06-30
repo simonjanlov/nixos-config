@@ -69,6 +69,12 @@
   hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
   hardware.sane.netConf = "printer.internal.xlnaudio.com";
 
+  services.resolved.enable = true;
+  services.resolved.fallbackDns = [ ];
+  services.resolved.llmnr = "false";
+  networking.networkmanager.dns = "systemd-resolved";
+
+
   system.stateVersion = "24.11";
 
 
