@@ -65,7 +65,13 @@
 
   services.ddclient = {
     enable = true;
-    configFile = "/etc/secrets/ddclient.conf";
+    protocol = "cloudflare";
+    usev4 = "webv4, webv4=dynamicdns.park-your-domain.com/getip";
+    usev6 = "no";
+    zone = "iikon.se";
+    domains = [ "dyn.iikon.se" ];
+    username = "token";
+    passwordFile = "/etc/secrets/ddclient-token";
   };
 
 
