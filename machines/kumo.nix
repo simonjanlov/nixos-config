@@ -5,7 +5,7 @@
   nix.nixPath = [
     "nixpkgs=/etc/nixos/modules/nixpkgs-stable"
     "nixos-config=/etc/nixos/machines/kumo.nix"
-    "/nix/var/nix/profiles/per-user/root/channels" # is this needed?
+    "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
   imports =
@@ -36,6 +36,9 @@
   hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
 
+
+  ### NETWORK SETUP ###
+
   networking.hostName = "kumo";
   networking.useDHCP = false;
 
@@ -60,16 +63,13 @@
     allowPing = true;
   };
 
-  # services.ddclient.enable = true;
-
   services.ddclient = {
     enable = true;
     configFile = "/etc/secrets/ddclient.conf";
   };
 
 
-
-
+  # SSH configuration.
   services.openssh = {
     enable = true;
     settings = {
@@ -79,17 +79,8 @@
     };
   };
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  system.stateVersion = "24.11";
-
-  # Disable systemd's power-saving targets
+  # Disable systemd's power-saving targets.
   systemd.targets = {
     sleep.enable = false;
     suspend.enable = false;
@@ -98,15 +89,17 @@
   };
 
 
+  system.copySystemConfiguration = true;
+  system.stateVersion = "24.11";
 
-  ### Hardware-configuration ###
+
+  ### HARDWARE CONFIGURATION ###
 
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/082e9a9b-bac9-434f-9795-c456dd1935c5";
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "uas" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "r8169" ];
 
-  # boot.kernelParams = [ "ip=dhcp" ];
   boot.kernelParams = [ "ip=192.168.1.3::192.168.1.1:255.255.255.0:kumo::none" ];
   boot.initrd.network = {
     enable = true;
@@ -116,9 +109,6 @@
       "/etc/ssh/ssh_host_rsa_key"
     ];
   };
-
-  # networking.useDHCP = false;
-  # networking.networkmanager.enable = false;
 
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];

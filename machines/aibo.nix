@@ -9,7 +9,7 @@
 
   imports =
     [
-      (modulesPath + "/installer/scan/not-detected.nix") # why this?
+      (modulesPath + "/installer/scan/not-detected.nix")
       ../modules
     ];
 
@@ -34,26 +34,6 @@
   hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
 
-  networking.hostName = "aibo";
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -69,12 +49,16 @@
   hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
   hardware.sane.netConf = "printer.internal.xlnaudio.com";
 
+  # Network related.
+  networking.hostName = "aibo";
+  networking.useDHCP = lib.mkDefault true;
+  networking.networkmanager.dns = "systemd-resolved";
   services.resolved.enable = true;
   services.resolved.fallbackDns = [ ];
   services.resolved.llmnr = "false";
-  networking.networkmanager.dns = "systemd-resolved";
 
 
+  system.copySystemConfiguration = true;
   system.stateVersion = "24.11";
 
 
@@ -107,13 +91,6 @@
     [ { device = "/dev/root_vg/swap"; }
     ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
