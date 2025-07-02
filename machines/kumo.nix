@@ -89,8 +89,7 @@
   services.fail2ban = {
     enable = true;
     bantime = "3h";
-    # Try aggressive mode if still getting too many brute force ssh attempts
-    jails.sshd.settings.mode = "extra";
+    jails.sshd.settings.mode = "aggressive";
   };
 
   # Disable systemd's power-saving targets.
