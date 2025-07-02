@@ -85,6 +85,12 @@
     };
   };
 
+  # Intrusion prevention.
+  services.fail2ban = {
+    enable = true;
+    bantime = "3h";
+    jails.sshd.settings.mode = "extra";
+  };
 
   # Disable systemd's power-saving targets.
   systemd.targets = {
