@@ -110,6 +110,7 @@
       delta
       duf
       ncdu
+      lm_sensors
     ];
 
     programs.direnv.enable = true;
