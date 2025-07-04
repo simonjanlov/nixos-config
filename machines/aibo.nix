@@ -15,6 +15,10 @@
 
   simon.gnome-paperwm.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    nomachine-client
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
