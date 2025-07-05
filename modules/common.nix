@@ -9,6 +9,14 @@
         The username to use for the main system user.
       '';
     };
+
+    simon.isStableSystem = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Whether the system should be built on stable releases.
+      '';
+    };
   };
 
   config = {
