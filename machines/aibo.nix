@@ -13,6 +13,8 @@
       ../modules
     ];
 
+  simon.isStableSystem = false;
+
   simon.gnome-paperwm.enable = true;
 
   environment.systemPackages = with pkgs; [
