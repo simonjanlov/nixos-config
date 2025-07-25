@@ -12,6 +12,7 @@
     [
       (modulesPath + "/installer/scan/not-detected.nix")
       ../modules
+      ../modules/home-manager-stable/nixos
     ];
 
   simon.isStableSystem = true;
