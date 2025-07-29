@@ -2,7 +2,7 @@
 
 {
   nix.nixPath = [
-    "nixpkgs=/etc/nixos/modules/nixpkgs-stable"
+    # "nixpkgs=/etc/nixos/modules/nixpkgs-stable"
     # "nixos-config=/etc/nixos/machines/kumo.nix"
     # "/nix/var/nix/profiles/per-user/root/channels"
   ];
