@@ -21,14 +21,14 @@
 
   config = lib.mkMerge [
 
-    # Configuration if "isStableSystem"
+    # Configuration added if "isStableSystem"
     (lib.mkIf config.simon.isStableSystem {
       nix.nixPath = [
         "nixpkgs=/etc/nixos/modules/nixpkgs-stable"
       ];
     })
 
-    # Configuration if not "isStableSystem"
+    # Configuration added if not "isStableSystem"
     (lib.mkIf (!config.simon.isStableSystem) {
       nix.nixPath = [
         "nixpkgs=/etc/nixos/modules/nixpkgs-unstable"

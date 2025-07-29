@@ -1,12 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  nix.nixPath = [
-    # "nixpkgs=/etc/nixos/modules/nixpkgs-unstable"
-    # "nixos-config=/etc/nixos/machines/aibo.nix"
-    # "/nix/var/nix/profiles/per-user/root/channels"
-  ];
-
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
