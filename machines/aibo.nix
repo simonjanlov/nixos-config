@@ -3,8 +3,8 @@
 {
   nix.nixPath = [
     "nixpkgs=/etc/nixos/modules/nixpkgs-unstable"
-    "nixos-config=/etc/nixos/machines/aibo.nix"
-    "/nix/var/nix/profiles/per-user/root/channels"
+    # "nixos-config=/etc/nixos/machines/aibo.nix"
+    # "/nix/var/nix/profiles/per-user/root/channels"
   ];
 
   imports =

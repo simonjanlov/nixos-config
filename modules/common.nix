@@ -21,6 +21,11 @@
 
   config = {
 
+    nix.nixPath = [
+      "nixos-config=/etc/nixos/machines/${config.networking.hostName}.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
+
     nix.settings = {
       cores = 0;
       experimental-features = [ "nix-command" "flakes" ];
