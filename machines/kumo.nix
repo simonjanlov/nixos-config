@@ -31,6 +31,10 @@
   hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
 
+  environment.systemPackages = with pkgs; [
+    netdata
+  ];
+
 
   ### NETWORK SETUP ###
 
