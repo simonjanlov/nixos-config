@@ -28,13 +28,7 @@
 
   services.pulseaudio.enable = false;
 
-  hardware.graphics.enable = true;
-  hardware.enableRedistributableFirmware = true;
-
-  environment.systemPackages = with pkgs; [
-    netdata
-  ];
-
+  services.netdata.enable = true;
 
   ### NETWORK SETUP ###
 
@@ -155,5 +149,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.graphics.enable = true;
+  hardware.enableRedistributableFirmware = true;
 
 }
