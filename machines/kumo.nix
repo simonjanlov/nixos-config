@@ -28,7 +28,12 @@
 
   services.pulseaudio.enable = false;
 
-  services.netdata.enable = true;
+  services.netdata = {
+    enable = true;
+    config.web = {
+      "bind to" = "0.0.0.0";
+    };
+  };
 
   ### NETWORK SETUP ###
 
@@ -54,6 +59,7 @@
   networking.firewall = {
     enable = true;
     allowPing = true;
+    allowedTCPPorts = [ 19999 ];
   };
 
   services.ddclient = {
