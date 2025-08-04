@@ -30,6 +30,7 @@
 
   services.netdata = {
     enable = true;
+    package = pkgs.netdata.override { withCloudUi = true; };
     config.web = {
       "bind to" = "0.0.0.0";
     };
