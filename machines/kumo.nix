@@ -32,10 +32,43 @@
     enable = true;
     package = pkgs.netdata.override { withCloudUi = true; };
     config.web = {
-      "bind to" = "0.0.0.0";
+      # "bind to" = "0.0.0.0";
+      "bind to" = "127.0.0.1";
     };
   };
 
+  services.nginx = {
+    enable = true;
+    # recommendedProxySettings = true;
+    virtualHosts =
+    # let
+    #   SSL = {
+    #     enableACME = true;
+    #     forceSSL = true;
+    #   };
+    # in
+      {
+        # Netdata server
+        "netdata.dyn.iikon.se" = #(SSL //
+          {
+            locations."/" = {
+              proxyPass = "http://127.0.0.1:19999";
+              extraConfig = ''
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+            };
+          } # )
+        ;
+        # "Catch all" Default server
+        "_" = {
+          default = true;
+          extraConfig = "return 444;";
+        };
+      };
+  };
 
   ### NETWORK SETUP ###
 
@@ -57,12 +90,12 @@
   '';
 
   networking.networkmanager.enable = false;
-  networking.extraHosts = "127.0.0.1 localhost netdata.dyn.iikon.se";
+  networking.extraHosts = "127.0.0.1 localhost netdata.dyn.iikon.se nope.dyn.iikon.se";
 
   networking.firewall = {
     enable = true;
     allowPing = true;
-    allowedTCPPorts = [ 19999 ];
+    allowedTCPPorts = [ 80 443 19999 ];
   };
 
   services.ddclient = {
