@@ -36,6 +36,7 @@
     };
   };
 
+
   ### NETWORK SETUP ###
 
   networking.hostName = "kumo";
@@ -56,6 +57,7 @@
   '';
 
   networking.networkmanager.enable = false;
+  networking.extraHosts = "127.0.0.1 localhost netdata.dyn.iikon.se";
 
   networking.firewall = {
     enable = true;
