@@ -37,20 +37,22 @@
     };
   };
 
+  security.acme.acceptTerms = true;
+  security.acme.defaults.email = "simon.janlov@gmail.com";
+
   services.nginx = {
     enable = true;
-    # recommendedProxySettings = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
     virtualHosts =
-    # let
-    #   SSL = {
-    #     enableACME = true;
-    #     forceSSL = true;
-    #   };
-    # in
       {
         # Netdata server
-        "netdata.dyn.iikon.se" = #(SSL //
+        "netdata.dyn.iikon.se" =
           {
+            forceSSL = true;
+            enableACME = true;
+
             extraConfig = ''
             auth_basic "Restricted Area";
             auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
@@ -58,15 +60,15 @@
 
             locations."/" = {
               proxyPass = "http://127.0.0.1:19999";
-              extraConfig = ''
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        '';
+        #       extraConfig = ''
+        # proxy_set_header Host $host;
+        # proxy_set_header X-Real-IP $remote_addr;
+        # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # proxy_set_header X-Forwarded-Proto $scheme;
+        # '';
             };
-          } # )
-        ;
+          };
+
         # "Catch all" Default server
         "_" = {
           default = true;
