@@ -51,6 +51,11 @@
         # Netdata server
         "netdata.dyn.iikon.se" = #(SSL //
           {
+            extraConfig = ''
+            auth_basic "Restricted Area";
+            auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
+            '';
+
             locations."/" = {
               proxyPass = "http://127.0.0.1:19999";
               extraConfig = ''
