@@ -56,6 +56,7 @@
             extraConfig = ''
             auth_basic "Restricted Area";
             auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
+            access_log syslog:server=unix:/dev/log;
             '';
 
             locations."/" = {
