@@ -16,7 +16,7 @@
     nomachine-client
   ];
 
-  networking.extraHosts = "192.168.1.3 netdata.dyn.iikon.se nope.dyn.iikon.se";
+  # networking.extraHosts = "192.168.1.3 netdata.dyn.iikon.se nope.dyn.iikon.se";
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
