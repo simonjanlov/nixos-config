@@ -16,8 +16,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.swraid.enable = true;
-
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -57,6 +55,7 @@
             auth_basic "Restricted Area";
             auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
             access_log syslog:server=unix:/dev/log;
+            error_log syslog:server=unix:/dev/log error;
             '';
 
             locations."/" = {
@@ -195,6 +194,25 @@
   swapDevices =
     [ { device = "/dev/disk/by-uuid/a1d80591-e690-4bec-a573-0c3712dfad11"; }
     ];
+
+
+  # APP-DATA RAID #
+
+  boot.swraid.enable = true;
+
+  fileSystems."/srv" = {
+    depends = [ "/" ]; # remove?
+    device = "/dev/mapper/raid";
+    fsType = "btrfs";
+    options = [ "subvol=subvol_root" ];
+    encrypted = {
+      enable = true;
+      blkDev = "/dev/disk/by-id/md-uuid-b610a794:6e81ba96:17d5401b:751b1691";
+      keyFile = "/mnt-root/etc/secrets/raid-keyfile";
+      label = "raid";
+    };
+  };
+
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
