@@ -19,27 +19,20 @@
     };
   };
 
-  config = lib.mkMerge [
 
-    # Configuration added if "isStableSystem"
-    (lib.mkIf config.simon.isStableSystem {
-      nix.nixPath = [
-        "nixpkgs=/etc/nixos/modules/nixpkgs-stable"
-      ];
-    })
+  config =
 
-    # Configuration added if not "isStableSystem"
-    (lib.mkIf (!config.simon.isStableSystem) {
-      nix.nixPath = [
-        "nixpkgs=/etc/nixos/modules/nixpkgs-unstable"
-      ];
-    })
-
-    # Unconditional configruation
     {
       nix.nixPath = [
         "nixos-config=/etc/nixos/machines/${config.networking.hostName}.nix"
         "/nix/var/nix/profiles/per-user/root/channels"
+
+        (lib.mkIf config.simon.isStableSystem
+          "nixpkgs=/etc/nixos/modules/nixpkgs-stable"
+        )
+        (lib.mkIf (!config.simon.isStableSystem)
+          "nixpkgs=/etc/nixos/modules/nixpkgs-unstable"
+        )
       ];
 
       nix.settings = {
@@ -159,6 +152,5 @@
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHbLcS53AasTSnalHAa63cMg+YaVzBUaI1ZYN4oGXaS+UhhjxWl+Sw5wPa3Nfby2kzgPPBqv0zwFh3pgH4tTinikQmmNEQGQKqB1mfEmJhZa3eqe40MhUGGKM8ihj7c0yY51YxIA4+h7tN5Kp/wOUoSmwEvKb81ywGVRhfG/sDdsSe/DaM/q0vi68ckbfLManmdPFXrhXUOuR3t2Q/2ZPirK51EkoTcPo2xASK3CuvK3imfnN7b/RbVKGFoecq7cK/9Vcj1alufepkvmndv2wwMuuIiv1osA6GytKR59oRnDtrqrj5TTl8wLsVoRQ6Mj+JJRiXPkX2jmEZgYaJpCcsBgp/EMjjXhzzs/vVcLzVLe8POzL30jZYwNlyWgMt8yOYjzBj3CFfhzEttj89htjE8gnuAw9g/sl+RM51wDGZ6i55jyIgjJnafy8130iiu4nV9MtoqHzqlafRJc30pTxjRfK/UQuA50ULoLjNh6yGeugm4MW5vQ7ANA4O0cKs/8JIqv6XcmePel23UUxiouAOkkODPBNpOy/dMq2OdRgwOu2acCd2BRDMNFGQnox8sTEvHybCYIoHjp8FCz/4Nt7oAliPtp330bpeT9rmZpLOU4hN5jh/KX7mEj3ZdnpeZfa7BLUoA2wm5CbXs5fnX0LmXDxZ32aqTR8nQbyDBJS0AQ== simon@simon-nixos-2024-09-23"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtWB5DWpkKbMCl/V3/PjUWYwepUtyTLuoseWy0AfSAF simon@MacBookPro"
       ];
-    }
-  ];
+    };
 }
