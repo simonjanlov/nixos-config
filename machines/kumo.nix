@@ -29,9 +29,14 @@
   services.netdata = {
     enable = true;
     package = pkgs.netdata.override { withCloudUi = true; };
-    config.web = {
-      # "bind to" = "0.0.0.0";
-      "bind to" = "127.0.0.1";
+    config = {
+      web = {
+        "bind to" = "127.0.0.1";
+      };
+      db = {
+        "dbengine tier 0 retention size" = "512MiB";
+        "dbengine tier 0 retention time" = "10d";
+      };
     };
   };
 
