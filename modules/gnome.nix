@@ -38,6 +38,7 @@ in
           gnome-tweaks
           spotify
           gimp
+          gnomeExtensions.launch-new-instance
         ];
 
 
@@ -48,6 +49,11 @@ in
       # Enable the GNOME Desktop Environment.
       services.xserver.displayManager.gdm.enable = true;
       services.xserver.desktopManager.gnome.enable = true;
+
+      # # New syntax from 25.11. Disable gnome on kumo server when
+      # # implementing this.
+      # services.displayManager.gdm.enable = true;
+      # services.desktopManager.gnome.enable = true;
 
 
       # Configure keymap in X11
@@ -83,7 +89,6 @@ in
                 disabled-extensions = [];
                 enabled-extensions = [
                   "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
-                  "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
                 ];
                 favorite-apps = [ "org.gnome.Nautilus.desktop" ];
               };
