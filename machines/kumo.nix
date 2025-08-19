@@ -47,6 +47,12 @@
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    appendConfig = ''
+    error_log stderr warn;
+    '';
+    appendHttpConfig = ''
+    access_log syslog:server=unix:/dev/log combined;
+    '';
 
     virtualHosts =
       {
@@ -59,8 +65,6 @@
             extraConfig = ''
             auth_basic "Restricted Area";
             auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
-            access_log syslog:server=unix:/dev/log;
-            error_log syslog:server=unix:/dev/log error;
             '';
 
             locations."/" = {
