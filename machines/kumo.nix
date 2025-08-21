@@ -132,8 +132,11 @@
   # Intrusion prevention.
   services.fail2ban = {
     enable = true;
+    ignoreIP = [ "192.168.0.0/16" ];
     bantime = "3h";
-    jails.sshd.settings.mode = "aggressive";
+    jails = {
+      sshd.settings.mode = "aggressive";
+    };
   };
 
   # Disable systemd's power-saving targets.
