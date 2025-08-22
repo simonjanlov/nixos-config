@@ -135,6 +135,9 @@
     ignoreIP = [ "192.168.0.0/16" ];
     bantime = "3h";
     jails = {
+      nginx-http-auth.settings.enabled = true;
+      nginx-botsearch.settings.enabled = true;
+      nginx-forbidden.settings.enabled = true;
       sshd.settings.mode = "aggressive";
     };
   };
