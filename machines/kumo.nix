@@ -138,9 +138,29 @@
       nginx-http-auth.settings.enabled = true;
       nginx-botsearch.settings.enabled = true;
       nginx-forbidden.settings.enabled = true;
+      # nginx-4xx.settings.enabled = true;
       sshd.settings.mode = "aggressive";
     };
   };
+
+  # Defining custom jail for fail2ban
+
+  environment.etc = {
+    "fail2ban/filter.d/nginx-4xx.conf".text = ''
+    [Definition]
+
+    failregex = ^<HOST>.*"(GET|POST|PROPFIND).*" (404|444|403|400|401) .*$
+
+    ignoreregex =
+
+    datepattern = {^LN-BEG}%%ExY(?P<_sep>[-/.])%%m(?P=_sep)%%d[T ]%%H:%%M:%%S(?:[.,]%%f)?(?:\s*%%z)?
+              ^[^\[]*\[({DATE})
+              {^LN-BEG}
+
+    journalmatch = _SYSTEMD_UNIT=nginx.service + _COMM=nginx
+    '';
+  };
+
 
   # Disable systemd's power-saving targets.
   systemd.targets = {
