@@ -133,29 +133,32 @@
   services.fail2ban = {
     enable = true;
     ignoreIP = [ "192.168.0.0/16" ];
-    bantime = "3h";
+    bantime = "24h";
     jails = {
+      nginx-propfind.settings = {
+        enabled = true;
+        port = "http,https";
+        findtime = 3600;
+      };
+
       nginx-http-auth.settings.enabled = true;
       nginx-botsearch.settings.enabled = true;
       nginx-forbidden.settings.enabled = true;
-      # nginx-4xx.settings.enabled = true;
+
       sshd.settings.mode = "aggressive";
     };
   };
 
   # Defining custom jail for fail2ban
-
   environment.etc = {
-    "fail2ban/filter.d/nginx-4xx.conf".text = ''
+    "fail2ban/filter.d/nginx-propfind.conf".text = ''
     [Definition]
 
-    failregex = ^<HOST>.*"(GET|POST|PROPFIND).*" (404|444|403|400|401) .*$
+    failregex = ^.*nginx: <HOST>.*"PROPFIND.*" 401 .*$
 
     ignoreregex =
 
-    datepattern = {^LN-BEG}%%ExY(?P<_sep>[-/.])%%m(?P=_sep)%%d[T ]%%H:%%M:%%S(?:[.,]%%f)?(?:\s*%%z)?
-              ^[^\[]*\[({DATE})
-              {^LN-BEG}
+    datepattern = {^LN-BEG}
 
     journalmatch = _SYSTEMD_UNIT=nginx.service + _COMM=nginx
     '';
