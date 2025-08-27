@@ -141,6 +141,13 @@
         findtime = 3600;
       };
 
+      nginx-4xx.settings = {
+        enabled = true;
+        port = "http,https";
+        findtime = 15;
+        maxretry = 6;
+      };
+
       nginx-http-auth.settings.enabled = true;
       nginx-botsearch.settings.enabled = true;
       nginx-forbidden.settings.enabled = true;
@@ -149,12 +156,26 @@
     };
   };
 
-  # Defining custom jail for fail2ban
+  # Defining custom jails for fail2ban
   environment.etc = {
     "fail2ban/filter.d/nginx-propfind.conf".text = ''
     [Definition]
 
     failregex = ^.*nginx: <HOST>.*"PROPFIND.*" 401 .*$
+
+    ignoreregex =
+
+    datepattern = {^LN-BEG}
+
+    journalmatch = _SYSTEMD_UNIT=nginx.service + _COMM=nginx
+    '';
+  };
+
+  environment.etc = {
+    "fail2ban/filter.d/nginx-4xx.conf".text = ''
+    [Definition]
+
+    failregex = ^.*nginx: <HOST>.*"(GET|POST).*" (401|400|403|404|444) .*$
 
     ignoreregex =
 
