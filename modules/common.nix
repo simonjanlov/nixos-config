@@ -89,7 +89,7 @@
         };
 
         home.file.".myconfig".text = ''
-      # This is a hej custom config file REMOTE-BUILD
+      # This is a custom config file REMOTE-BUILD2
       export SIMON_MY_VARIABLE="Hello, Home Manager!"
       '';
 
