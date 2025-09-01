@@ -44,42 +44,25 @@
 
   simon.nginx-base.enable = true;
 
-  services.nginx = {
-    # enable = true;
-    # recommendedProxySettings = true;
-    # recommendedTlsSettings = true;
-    # appendConfig = ''
-    # error_log stderr warn;
-    # '';
-    # appendHttpConfig = ''
-    # access_log syslog:server=unix:/dev/log combined;
-    # '';
+  services.nginx.virtualHosts =
+    {
+      # Netdata server
+      "netdata.dyn.iikon.se" =
+        {
+          forceSSL = true;
+          enableACME = true;
 
-    virtualHosts =
-      {
-        # Netdata server
-        "netdata.dyn.iikon.se" =
-          {
-            forceSSL = true;
-            enableACME = true;
-
-            extraConfig = ''
+          extraConfig = ''
             auth_basic "Restricted Area";
             auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
             '';
 
-            locations."/" = {
-              proxyPass = "http://127.0.0.1:19999";
-            };
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:19999";
           };
+        };
+    };
 
-        # # "Catch all" Default server
-        # "_" = {
-        #   default = true;
-        #   extraConfig = "return 444;";
-        # };
-      };
-  };
 
   ### NETWORK SETUP ###
 
