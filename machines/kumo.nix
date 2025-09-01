@@ -42,16 +42,18 @@
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "simon.janlov@gmail.com";
 
+  simon.nginx-base.enable = true;
+
   services.nginx = {
-    enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    appendConfig = ''
-    error_log stderr warn;
-    '';
-    appendHttpConfig = ''
-    access_log syslog:server=unix:/dev/log combined;
-    '';
+    # enable = true;
+    # recommendedProxySettings = true;
+    # recommendedTlsSettings = true;
+    # appendConfig = ''
+    # error_log stderr warn;
+    # '';
+    # appendHttpConfig = ''
+    # access_log syslog:server=unix:/dev/log combined;
+    # '';
 
     virtualHosts =
       {
@@ -71,11 +73,11 @@
             };
           };
 
-        # "Catch all" Default server
-        "_" = {
-          default = true;
-          extraConfig = "return 444;";
-        };
+        # # "Catch all" Default server
+        # "_" = {
+        #   default = true;
+        #   extraConfig = "return 444;";
+        # };
       };
   };
 

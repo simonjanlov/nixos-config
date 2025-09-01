@@ -9,6 +9,7 @@
       ./gnome.nix
       ./gnome-paperwm.nix
       ./emacs.nix
+      ./nginx-base.nix
       # ./home-manager/nixos
     ];
     # (lib.mkIf config.simon.isStableSystem [
