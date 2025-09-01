@@ -9,5 +9,6 @@
       ./gnome-paperwm.nix
       ./emacs.nix
       ./nginx-base.nix
+      ./netdata.nix
     ];
 }
