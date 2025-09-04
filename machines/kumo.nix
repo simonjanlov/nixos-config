@@ -12,6 +12,7 @@
 
   simon.gnome.enable = true;
   simon.netdata.enable = true;
+  simon.intrusion-prevention.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -75,63 +76,6 @@
      PermitRootLogin = "prohibit-password";
     };
   };
-
-  # Intrusion prevention.
-  services.fail2ban = {
-    enable = true;
-    ignoreIP = [ "192.168.0.0/16" ];
-    bantime = "24h";
-    jails = {
-      nginx-propfind.settings = {
-        enabled = true;
-        port = "http,https";
-        findtime = 3600;
-      };
-
-      nginx-4xx.settings = {
-        enabled = true;
-        port = "http,https";
-        findtime = 15;
-        maxretry = 6;
-      };
-
-      nginx-http-auth.settings.enabled = true;
-      nginx-botsearch.settings.enabled = true;
-      nginx-forbidden.settings.enabled = true;
-
-      sshd.settings.mode = "aggressive";
-    };
-  };
-
-  # Defining custom jails for fail2ban
-  environment.etc = {
-    "fail2ban/filter.d/nginx-propfind.conf".text = ''
-    [Definition]
-
-    failregex = ^.*nginx: <HOST>.*"PROPFIND.*" 401 .*$
-
-    ignoreregex =
-
-    datepattern = {^LN-BEG}
-
-    journalmatch = _SYSTEMD_UNIT=nginx.service + _COMM=nginx
-    '';
-  };
-
-  environment.etc = {
-    "fail2ban/filter.d/nginx-4xx.conf".text = ''
-    [Definition]
-
-    failregex = ^.*nginx: <HOST>.*".*" (401|400|403|404|444) .*$
-
-    ignoreregex =
-
-    datepattern = {^LN-BEG}
-
-    journalmatch = _SYSTEMD_UNIT=nginx.service + _COMM=nginx
-    '';
-  };
-
 
   # Disable systemd's power-saving targets.
   systemd.targets = {
