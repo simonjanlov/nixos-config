@@ -32,7 +32,6 @@ in
           gparted
           vscode
           firefox-wayland
-          foot
           slack
           bitwarden
           gnome-tweaks
@@ -62,6 +61,18 @@ in
 
       home-manager.users.simon = { lib, ... }:
         {
+          programs.foot = {
+            enable = true;
+            settings = {
+              main = {
+                font = "monospace:size=9";
+              };
+              colors = {
+                alpha = 0.97;
+              };
+            };
+          };
+
           dconf.settings = mkMerge [
             (mkIf cfg.custom-keys {
               "org/gnome/settings-daemon/plugins/media-keys" = {
