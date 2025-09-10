@@ -52,8 +52,8 @@
 
   # Network related.
   networking.hostName = "aibo";
-  networking.useDHCP = lib.mkDefault true;
   networking.networkmanager.dns = "systemd-resolved";
+  networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   services.resolved.enable = true;
   services.resolved.fallbackDns = [ ];
   services.resolved.llmnr = "false";
