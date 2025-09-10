@@ -37,6 +37,7 @@ in
           gnome-tweaks
           spotify
           gimp
+          element-desktop
           gnomeExtensions.launch-new-instance
         ];
 
