@@ -14,6 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     nomachine-client
+    colmena
   ];
 
   # Use the systemd-boot EFI boot loader.
