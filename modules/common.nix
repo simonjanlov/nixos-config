@@ -89,7 +89,7 @@
         };
 
         home.file.".myconfig".text = ''
-      # This is a custom config file REMOTE-BUILD2
+      # COLMENA DEPLOYMENT 2!
       export SIMON_MY_VARIABLE="Hello, Home Manager!"
       '';
 
