@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nodes, ... }:
 
 {
   options = {
@@ -89,9 +89,10 @@
         };
 
         home.file.".myconfig".text = ''
-      # COLMENA DEPLOYMENT 2!
-      export SIMON_MY_VARIABLE="Hello, Home Manager!"
-      '';
+          # COLMENA DEPLOYMENT 2!
+          home server hostname: ${nodes.kumo.config.networking.hostName}
+          export SIMON_MY_VARIABLE="Hello, Home Manager!"
+          '';
 
         home.stateVersion = config.system.stateVersion;
       };
