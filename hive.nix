@@ -21,7 +21,12 @@
 
   kumo = { pkgs, ... }: {
 
-    deployment.targetHost = "dyn.iikon.se";
+    deployment = {
+      targetHost = "dyn.iikon.se";
+      keys."cloudflare-DNS-token" = {
+        keyFile = "/home/simon/.deploy-keys/cloudflare-DNS-token";
+      };
+    };
 
     imports = [ ./machines/kumo.nix ];
   };

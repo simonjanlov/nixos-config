@@ -63,7 +63,7 @@
     zone = "iikon.se";
     domains = [ "dyn.iikon.se" ];
     username = "token";
-    passwordFile = "/etc/secrets/ddclient-token";
+    passwordFile = "/run/keys/cloudflare-DNS-token";
   };
 
 
