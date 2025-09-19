@@ -1,3 +1,0 @@
-# For safety, ignore everything inside of ./secrets except the .gitignore file
-secrets/*
-!secrets/.gitignore
