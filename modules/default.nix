@@ -11,5 +11,6 @@
       ./nginx-base.nix
       ./netdata.nix
       ./intrusion-prevention.nix
+      ./deployment-tools.nix
     ];
 }

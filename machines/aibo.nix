@@ -9,13 +9,10 @@
     ];
 
   simon.isStableSystem = false;
+  simon.deployment-tools.enable = true;
 
   simon.gnome-paperwm.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    nomachine-client
-    colmena
-  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
