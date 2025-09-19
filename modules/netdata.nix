@@ -46,7 +46,7 @@ in
 
               extraConfig = ''
                 auth_basic "Restricted Area";
-                auth_basic_user_file /var/lib/nginx/secrets/.htpasswd;
+                auth_basic_user_file /run/keys/htpasswd-netdata-kumo;
                 '';
 
               locations."/" = {
@@ -54,5 +54,8 @@ in
               };
             };
         };
+      systemd.services.nginx.serviceConfig.SupplementaryGroups = [
+        "keys"
+      ];
     };
 }

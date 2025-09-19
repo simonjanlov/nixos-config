@@ -89,7 +89,7 @@
         };
 
         home.file.".myconfig".text = ''
-          # COLMENA DEPLOYMENT 2!
+          # COLMENA DEPLOYMENT ONCE MORE
           home server hostname: ${nodes.kumo.config.networking.hostName}
           export SIMON_MY_VARIABLE="Hello, Home Manager!"
           '';

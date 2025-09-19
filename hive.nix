@@ -9,7 +9,7 @@
   };
 
   # Attribute name must match the networking.hostName
-  aibo = { name, nodes, ... }: {
+  aibo = { ... }: {
 
     deployment = {
       allowLocalDeployment = true;
@@ -19,12 +19,14 @@
     imports = [ ./machines/aibo.nix ];
   };
 
-  kumo = { pkgs, ... }: {
+  kumo = { ... }: {
 
     deployment = {
       targetHost = "dyn.iikon.se";
-      keys."cloudflare-DNS-token" = {
-        keyFile = "/home/simon/.deploy-keys/cloudflare-DNS-token";
+      keys = {
+        "cloudflare-DNS-token".keyFile = "/home/simon/.deploy-keys/cloudflare-DNS-token";
+        "htpasswd-netdata-kumo".keyFile = "/home/simon/.deploy-keys/htpasswd-netdata-kumo";
+        "htpasswd-netdata-kumo".user = "nginx";
       };
     };
 
