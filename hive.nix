@@ -24,8 +24,8 @@
     deployment = {
       targetHost = "dyn.iikon.se";
       keys = {
-        "cloudflare-DNS-token".keyFile = "/home/simon/.deploy-keys/cloudflare-DNS-token";
-        "htpasswd-netdata-kumo".keyFile = "/home/simon/.deploy-keys/htpasswd-netdata-kumo";
+        "cloudflare-DNS-token".keyFile = "/etc/nixos/secrets/cloudflare-DNS-token";
+        "htpasswd-netdata-kumo".keyFile = "/etc/nixos/secrets/htpasswd-netdata-kumo";
         "htpasswd-netdata-kumo".user = "nginx";
       };
     };
