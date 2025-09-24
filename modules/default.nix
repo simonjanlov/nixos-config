@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./backups.nix
       ./cachix.nix
       ./common.nix
       ./gnome.nix
