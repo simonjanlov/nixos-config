@@ -87,10 +87,8 @@
           };
         };
 
-        home.file.".myconfig".text = ''
-          # COLMENA DEPLOYMENT ONCE MORE
-          home server hostname: ${nodes.kumo.config.networking.hostName}
-          export SIMON_MY_VARIABLE="Hello, Home Manager!"
+        home.file.".config/nixpkgs/config.nix".text = ''
+          { allowUnfree = true; }
           '';
 
         home.stateVersion = config.system.stateVersion;
