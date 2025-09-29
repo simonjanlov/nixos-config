@@ -10,7 +10,6 @@
 
   simon.isStableSystem = true;
 
-  simon.gnome.enable = true;
   simon.netdata.enable = true;
   simon.intrusion-prevention.enable = true;
 
