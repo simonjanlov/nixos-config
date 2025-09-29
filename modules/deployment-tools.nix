@@ -19,7 +19,6 @@ in
     {
       environment.systemPackages = with pkgs; [
         colmena
-        gocryptfs
       ];
     };
 }
