@@ -13,5 +13,6 @@
       ./netdata.nix
       ./intrusion-prevention.nix
       ./deployment-tools.nix
+      ./work.nix
     ];
 }

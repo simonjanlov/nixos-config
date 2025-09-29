@@ -10,6 +10,7 @@
 
   simon.isStableSystem = false;
   simon.deployment-tools.enable = true;
+  simon.work.enable = true;
 
   simon.gnome-paperwm.enable = true;
 
@@ -34,20 +35,6 @@
   hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
 
-
-  # Enable CUPS to print documents.
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      hplipWithPlugin
-    ];
-  };
-
-  # Enable SANE to scan documents.
-  services.saned.enable = true;
-  hardware.sane.enable = true;
-  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
-  hardware.sane.netConf = "printer.internal.xlnaudio.com";
 
   # Network related.
   networking.hostName = "aibo";
@@ -88,8 +75,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/root_vg/swap"; }
-    ];
+    [ { device = "/dev/root_vg/swap"; } ];
 
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
