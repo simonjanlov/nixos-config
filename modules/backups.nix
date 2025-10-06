@@ -25,7 +25,7 @@ in
         description = ''List of paths to exclude'';
       };
       time = mkOption {
-        default = "12:00";
+        default = "11:00";
         type = types.str;
         description = ''What time to run the backup'';
       };
@@ -53,8 +53,8 @@ in
             # runCheck = true;
             # checkOpts = [ "--read-data-subset=10%" ];
             timerConfig = {
-              # OnCalendar = cfg.time;
-              OnUnitActiveSec = "300s"; # For testing
+              OnCalendar = cfg.time;
+              # OnUnitActiveSec = "300s"; # For testing
             };
           }
 

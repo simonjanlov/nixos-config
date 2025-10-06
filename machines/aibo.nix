@@ -14,7 +14,12 @@
 
   simon.gnome-paperwm.enable = true;
 
-  simon.backups.paths = [ "/home/simon/restic-test" ];
+  simon.backups.paths = [ "/home/simon" ];
+  simon.backups.exclude = [
+    "/home/simon/.cache"
+    "/home/simon/.mozilla"
+    "/home/simon/.emacs.d"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
