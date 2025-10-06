@@ -27,6 +27,8 @@
         "cloudflare-DNS-token".keyFile = "/etc/nixos/secrets/cloudflare-DNS-token";
         "htpasswd-netdata-kumo".keyFile = "/etc/nixos/secrets/htpasswd-netdata-kumo";
         "htpasswd-netdata-kumo".user = "nginx";
+        "restic-password".keyFile = "/etc/nixos/secrets/restic-pw-kumo";
+        "rclone.conf".keyFile = "/etc/nixos/secrets/rclone.conf";
       };
     };
 
