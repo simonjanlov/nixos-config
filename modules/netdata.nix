@@ -2,6 +2,7 @@
 
 let
   cfg = config.simon.netdata;
+  keys = config.deployment.keys;
 in
 {
   options.simon.netdata =
@@ -46,7 +47,7 @@ in
 
               extraConfig = ''
                 auth_basic "Restricted Area";
-                auth_basic_user_file /run/keys/htpasswd-netdata-kumo;
+                auth_basic_user_file ${keys.htpasswd-netdata-kumo.path};
                 '';
 
               locations."/" = {

@@ -65,8 +65,8 @@ in
           })
           # Else
           (lib.mkIf (!config.simon.deployment-tools.enable) {
-            passwordFile = "/run/keys/restic-password";
-            rcloneConfigFile = "/run/keys/rclone.conf";
+            passwordFile = config.deployment.keys.restic-password.path;
+            rcloneConfigFile = config.deployment.keys."rclone.conf".path;
           })
         ];
       };
