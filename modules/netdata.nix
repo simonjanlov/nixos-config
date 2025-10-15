@@ -3,6 +3,9 @@
 let
   cfg = config.simon.netdata;
   keys = config.deployment.keys;
+  unstable = import /etc/nixos/modules/nixpkgs-unstable {
+    config = { allowUnfree = true; };
+  };
 in
 {
   options.simon.netdata =
@@ -20,7 +23,7 @@ in
     {
       services.netdata = {
         enable = true;
-        package = pkgs.netdata.override { withCloudUi = true; };
+        package = unstable.netdata.override { withCloudUi = true; };
         config = {
           web = {
             "bind to" = "127.0.0.1";
