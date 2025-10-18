@@ -21,6 +21,9 @@ in
         enable = true;
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
+
         appendConfig = ''
           error_log stderr warn;
           '';
