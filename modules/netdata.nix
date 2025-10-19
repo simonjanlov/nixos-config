@@ -35,9 +35,6 @@ in
         };
       };
 
-      security.acme.acceptTerms = true;
-      security.acme.defaults.email = "simon.janlov@gmail.com";
-
       simon.nginx-base.enable = true;
 
       services.nginx.virtualHosts =
