@@ -42,7 +42,6 @@ in
 
       services.nginx.virtualHosts =
         {
-          # Netdata server
           "netdata.dyn.iikon.se" =
             {
               forceSSL = true;
