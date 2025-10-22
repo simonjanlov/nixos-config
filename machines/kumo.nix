@@ -10,6 +10,7 @@
 
   simon.isStableSystem = true;
 
+  simon.immich.enable = true;
   simon.netdata.enable = true;
   simon.intrusion-prevention.enable = true;
 
