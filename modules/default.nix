@@ -14,5 +14,6 @@
       ./intrusion-prevention.nix
       ./deployment-tools.nix
       ./work.nix
+      ./immich.nix
     ];
 }
