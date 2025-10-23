@@ -26,6 +26,9 @@ in
         openFirewall = true;
         mediaLocation = "/srv/media/immich";
         secretsFile = "${keys.immich-secrets.path}";
+        settings = {
+          server.externalDomain = "https://photos.dyn.iikon.se";
+        };
       };
 
       services.immich.machine-learning.environment = {
