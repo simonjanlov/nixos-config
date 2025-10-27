@@ -25,6 +25,9 @@ in
         settings = {
           server.externalDomain = "https://photos.dyn.iikon.se";
         };
+        # settings = {
+        #   server.externalDomain = "https://share.dyn.iikon.se";
+        # };
       };
 
       services.immich.machine-learning.environment = {
@@ -44,7 +47,7 @@ in
               enableACME = true;
 
               locations."/" = {
-                proxyPass = "http://[::1]:${toString config.services.immich.port}";
+                proxyPass = "http://${config.services.immich.host}:${toString config.services.immich.port}";
                 proxyWebsockets = true;
 
                 extraConfig = ''
@@ -56,5 +59,26 @@ in
               };
             };
         };
+
+      ## Settings for Immich Public Proxy ##
+
+      # services.nginx.virtualHosts =
+      #   {
+      #     "share.dyn.iikon.se" =
+      #       {
+      #         forceSSL = true;
+      #         enableACME = true;
+
+      #         locations."/" = {
+      #           proxyPass = "http://localhost:${toString config.services.immich-public-proxy.port}";
+      #         };
+      #       };
+      #   };
+
+      # services.immich-public-proxy = {
+      #   enable = true;
+      #   openFirewall = true;
+      #   immichUrl = "http://${config.services.immich.host}:${toString config.services.immich.port}";
+      # };
     };
 }
