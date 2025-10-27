@@ -2,9 +2,6 @@
 let
   cfg = config.simon.immich;
   keys = config.deployment.keys;
-  unstable = import /etc/nixos/modules/nixpkgs-unstable {
-    config = { allowUnfree = true; };
-  };
 in
 {
   options.simon.immich =
@@ -22,7 +19,6 @@ in
     {
       services.immich = {
         enable = true;
-        package = unstable.immich;
         openFirewall = true;
         mediaLocation = "/srv/media/immich";
         secretsFile = "${keys.immich-secrets.path}";
