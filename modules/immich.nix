@@ -24,6 +24,7 @@ in
         secretsFile = "${keys.immich-secrets.path}";
         settings = {
           server.externalDomain = "https://photos.dyn.iikon.se";
+          machineLearning.duplicateDetection.maxDistance = "0.05";
         };
         # settings = {
         #   server.externalDomain = "https://share.dyn.iikon.se";
