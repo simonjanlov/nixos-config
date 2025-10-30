@@ -15,5 +15,6 @@
       ./deployment-tools.nix
       ./work.nix
       ./immich.nix
+      ./domain.nix
     ];
 }
