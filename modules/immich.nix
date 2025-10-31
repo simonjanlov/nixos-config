@@ -77,7 +77,6 @@ in
 
       # services.immich-public-proxy = {
       #   enable = true;
-      #   openFirewall = true;
       #   immichUrl = "http://${config.services.immich.host}:${toString config.services.immich.port}";
       # };
     };
