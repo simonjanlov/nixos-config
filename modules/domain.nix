@@ -3,7 +3,7 @@
 {
   options.simon.domain =
     {
-      external.domain = lib.mkOption {
+      homelab.domain = lib.mkOption {
         default = "dyn.iikon.se";
         type = lib.types.str;
         description = ''
