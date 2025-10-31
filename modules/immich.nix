@@ -19,7 +19,6 @@ in
     {
       services.immich = {
         enable = true;
-        openFirewall = true;
         mediaLocation = "/srv/media/immich";
         secretsFile = "${keys.immich-secrets.path}";
         settings = {

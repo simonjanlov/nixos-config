@@ -52,7 +52,7 @@
   networking.firewall = {
     enable = true;
     allowPing = true;
-    allowedTCPPorts = [ 80 443 19999 ];
+    allowedTCPPorts = [ 80 443 ];
   };
 
   services.ddclient = {
