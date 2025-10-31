@@ -31,6 +31,8 @@
         "rclone.conf".keyFile = "/etc/nixos/secrets/rclone.conf";
         "immich-secrets".keyFile = "/etc/nixos/secrets/immich-secrets-kumo";
         "immich-secrets".user = "immich";
+        "vaultwarden-env".keyFile = "/etc/nixos/secrets/vaultwarden.env";
+        "vaultwarden-env".user = "vaultwarden";
       };
     };
 

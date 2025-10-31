@@ -16,5 +16,6 @@
       ./work.nix
       ./immich.nix
       ./domain.nix
+      ./vaultwarden.nix
     ];
 }

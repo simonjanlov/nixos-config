@@ -12,6 +12,7 @@
 
   simon.immich.enable = true;
   simon.netdata.enable = true;
+  simon.vaultwarden.enable = true;
   simon.intrusion-prevention.enable = true;
 
   # Use the systemd-boot EFI boot loader.
