@@ -36,6 +36,7 @@ in
             PASSWORD_ITERATIONS = 2000000;
           };
           environmentFile = keys.vaultwarden-env.path;
+        backupDir = "/var/lib/backup-vaultwarden";
       };
 
       simon.nginx-base.enable = true;
