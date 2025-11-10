@@ -39,6 +39,15 @@ in
         backupDir = "/var/lib/backup-vaultwarden";
       };
 
+      systemd.services.vaultwarden = {
+        serviceConfig = {
+          RestartSec = 3;
+        };
+        # after = [ "vaultwarden-env-key.path" ];
+        # wants = [ "vaultwarden-env-key.path" ];
+      };
+
+
       simon.backups.paths = [ "${config.services.vaultwarden.backupDir}" ];
 
       simon.nginx-base.enable = true;
