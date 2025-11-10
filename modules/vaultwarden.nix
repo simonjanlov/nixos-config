@@ -39,6 +39,8 @@ in
         backupDir = "/var/lib/backup-vaultwarden";
       };
 
+      simon.backups.paths = [ "${config.services.vaultwarden.backupDir}" ];
+
       simon.nginx-base.enable = true;
 
       services.nginx.virtualHosts =

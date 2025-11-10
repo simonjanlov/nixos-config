@@ -37,6 +37,8 @@ in
       services.immich.accelerationDevices = [ "/dev/dri/renderD128" ];
       users.users.immich.extraGroups = [ "video" "render" ];
 
+      simon.backups.paths = [ "${config.services.immich.mediaLocation}" ];
+
       simon.nginx-base.enable = true;
 
       services.nginx.virtualHosts =
