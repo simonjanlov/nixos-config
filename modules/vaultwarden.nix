@@ -42,10 +42,7 @@ in
       systemd.services.vaultwarden =
         {
           after = [ "vaultwarden-env-key.service" ];
-          wants = [ "vaultwarden-env-key.service"];
-          serviceConfig = {
-            RestartSec = 3;
-          };
+          wants = [ "vaultwarden-env-key.service" ];
         };
 
       simon.backups.paths = [ "${config.services.vaultwarden.backupDir}" ];
