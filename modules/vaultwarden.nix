@@ -39,14 +39,14 @@ in
         backupDir = "/var/lib/backup-vaultwarden";
       };
 
-      systemd.services.vaultwarden = {
-        serviceConfig = {
-          RestartSec = 3;
+      systemd.services.vaultwarden =
+        {
+          after = [ "vaultwarden-env-key.service" ];
+          wants = [ "vaultwarden-env-key.service"];
+          serviceConfig = {
+            RestartSec = 3;
+          };
         };
-        # after = [ "vaultwarden-env-key.path" ];
-        # wants = [ "vaultwarden-env-key.path" ];
-      };
-
 
       simon.backups.paths = [ "${config.services.vaultwarden.backupDir}" ];
 
