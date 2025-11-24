@@ -100,6 +100,12 @@ in
                 favorite-apps = [ "org.gnome.Nautilus.desktop" ];
               };
 
+              "org/gnome/mutter" = {
+                experimental-features = [
+                  "scale-monitor-framebuffer"
+                ];
+              };
+
               "org/gnome/desktop/interface" = {
                 color-scheme = "prefer-dark";
                 enable-hot-corners = false;
