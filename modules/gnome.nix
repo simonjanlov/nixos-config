@@ -31,9 +31,9 @@ in
         [
           gparted
           vscode
-          firefox-wayland
+          firefox
           slack
-          bitwarden
+          bitwarden-desktop
           gnome-tweaks
           spotify
           gimp
