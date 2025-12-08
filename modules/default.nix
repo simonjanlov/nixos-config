@@ -17,5 +17,6 @@
       ./immich.nix
       ./domain.nix
       ./vaultwarden.nix
+      ./home-assistant.nix
     ];
 }
