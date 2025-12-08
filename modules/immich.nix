@@ -49,7 +49,7 @@ in
 
       services.nginx.virtualHosts =
         {
-          "photos.dyn.iikon.se" =
+          "photos.${config.simon.domain.homelab.domain}" =
             {
               forceSSL = true;
               enableACME = true;
