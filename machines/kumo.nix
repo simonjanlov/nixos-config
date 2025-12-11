@@ -87,7 +87,7 @@
     hybrid-sleep.enable = false;
   };
 
-  systemd.extraConfig = "DefaultRestartSec=3";
+  systemd.settings.Manager = { DefaultRestartSec = 3; };
 
   system.copySystemConfiguration = true;
   system.stateVersion = "24.11";

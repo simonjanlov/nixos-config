@@ -75,16 +75,18 @@
 
         programs.git = {
           enable = true;
-          userEmail = "simon.janlov@gmail.com";
-          userName = "simonjanlov";
-          delta = {
-            enable = true;
-            options = {
-              navigate = true;
-              side-by-side = true;
-              true-color = "always";
-            };
+          settings.user.email = "simon.janlov@gmail.com";
+          settings.user.name = "simonjanlov";
+        };
+
+        programs.delta = {
+          enable = true;
+          options = {
+            navigate = true;
+            side-by-side = true;
+            true-color = "always";
           };
+          enableGitIntegration = true;
         };
 
         home.file.".config/nixpkgs/config.nix".text = ''
