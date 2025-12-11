@@ -23,6 +23,8 @@ in
           extraOptions = [
             "--network=host"
             "--device=/dev/ttyUSB0:/dev/ttyUSB0"
+            "--cap-add=NET_ADMIN"
+            "--cap-add=NET_RAW"
           ];
           volumes = [
             "home-assistant:/config"
@@ -34,6 +36,8 @@ in
       simon.backups.paths = [ "/var/lib/containers" ];
 
       simon.nginx-base.enable = true;
+
+      hardware.bluetooth.enable = true;
 
       services.nginx.virtualHosts =
         {
