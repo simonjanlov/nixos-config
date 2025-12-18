@@ -55,6 +55,8 @@ in
       services.xserver.xkb.layout = "se";
       services.xserver.xkb.options = "eurosign:e,ctrl:nocaps";
 
+      services.fwupd.enable = true;
+
       home-manager.users.simon = { lib, ... }:
         {
           programs.foot = {
