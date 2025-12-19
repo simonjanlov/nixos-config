@@ -41,6 +41,10 @@ in
           gnomeExtensions.launch-new-instance
         ];
 
+      environment.sessionVariables = {
+        QT_QPA_PLATFORM = "wayland";
+        NIXOS_OZONE_WL = "1";
+      };
 
       # Enable the X11 windowing system.
       services.xserver.enable = true;
