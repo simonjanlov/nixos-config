@@ -35,5 +35,10 @@ in
       hardware.sane.enable = true;
       hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
       hardware.sane.netConf = "printer.internal.xlnaudio.com";
+
+      # XLN office CA certificate
+      security.pki.certificateFiles = [
+        ../certs/xln.ca.cert.pem
+      ];
     };
 }
