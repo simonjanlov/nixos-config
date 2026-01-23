@@ -36,12 +36,6 @@ in
       services.immich.accelerationDevices = [ "/dev/dri/renderD128" ];
       users.users.immich.extraGroups = [ "video" "render" ];
 
-      systemd.services.immich-server =
-        {
-          after = [ "immich-secrets-key.service" ];
-          wants = [ "immich-secrets-key.service" ];
-        };
-
       simon.backups.paths = [ "${config.services.immich.mediaLocation}" ];
 
       simon.nginx-base.enable = true;
