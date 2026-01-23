@@ -20,7 +20,6 @@ in
       services.immich = {
         enable = true;
         mediaLocation = "/srv/media/immich";
-        secretsFile = "${keys.immich-secrets.path}";
         settings = {
           server.externalDomain = "https://photos.dyn.iikon.se";
           machineLearning.duplicateDetection.maxDistance = "0.05";
