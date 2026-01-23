@@ -18,5 +18,6 @@
       ./domain.nix
       ./vaultwarden.nix
       ./home-assistant.nix
+      ./mealie.nix
     ];
 }

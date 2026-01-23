@@ -31,6 +31,7 @@
         "rclone.conf".keyFile = "/etc/nixos/secrets/rclone.conf";
         "vaultwarden-env".keyFile = "/etc/nixos/secrets/vaultwarden.env";
         "vaultwarden-env".user = "vaultwarden";
+        "mealie-secrets".keyFile ="/etc/nixos/secrets/mealie-secrets-kumo";
       };
     };
 
