@@ -33,6 +33,12 @@ in
         database.createLocally = true;
       };
 
+      systemd.services.mealie =
+        {
+          after = [ "mealie-secrets-key.service" ];
+          wants = [ "mealie-secrets-key.service" ];
+        };
+
       simon.nginx-base.enable = true;
 
       services.nginx.virtualHosts =
