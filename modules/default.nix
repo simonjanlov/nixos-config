@@ -19,5 +19,6 @@
       ./vaultwarden.nix
       ./home-assistant.nix
       ./mealie.nix
+      ./local-llm.nix
     ];
 }

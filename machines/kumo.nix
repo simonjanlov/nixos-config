@@ -10,6 +10,7 @@
 
   simon.isStableSystem = true;
 
+  simon.llm.openWebUI.enable = true;
   simon.mealie.enable = true;
   simon.immich.enable = true;
   simon.netdata.enable = true;
