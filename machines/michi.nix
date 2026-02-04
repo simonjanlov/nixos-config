@@ -10,11 +10,17 @@
 
   simon.isStableSystem = false;
   simon.gnome-paperwm.enable = true;
+  simon.emacs.enable = false;
 
   networking.hostName = "michi";
 
   system.copySystemConfiguration = true;
   system.stateVersion = "25.11";
+
+  environment.systemPackages =
+    [
+      pkgs.emacs
+    ];
 
 
   ### HARDWARE CONFIGURATION ###
