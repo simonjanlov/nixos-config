@@ -91,6 +91,9 @@ in
               colors = {
                 alpha = 0.97;
               };
+	      csd = {
+	        size = 0;
+	      };
             };
           };
 
