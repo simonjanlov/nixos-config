@@ -12,6 +12,11 @@
   simon.gnome-paperwm.enable = true;
   simon.emacs.enable = false;
 
+
+  home-manager.users.simon.dconf.settings."org/gnome/desktop/peripherals/touchpad".tap-to-click = lib.mkForce true;
+ 
+
+
   networking.hostName = "michi";
 
   system.copySystemConfiguration = true;
