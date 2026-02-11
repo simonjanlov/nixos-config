@@ -26,6 +26,10 @@ in
           SMTP_HOST = "smtp.gmail.com";
           SMTP_FROM_EMAIL = "simon.janlov@gmail.com";
           SMTP_USER = "simon.janlov@gmail.com";
+          OPENAI_BASE_URL = "http://${config.services.ollama.host}:${toString config.services.ollama.port}/v1";
+          OPENAI_API_KEY = "12345";
+          OPENAI_MODEL = "jobautomation/OpenEuroLLM-Swedish:latest";
+          OPENAI_REQUEST_TIMEOUT = 400;
         };
         credentialsFile = "${keys.mealie-secrets.path}";
 
@@ -52,7 +56,7 @@ in
                 proxyPass = "http://${config.services.mealie.listenAddress}:${toString config.services.mealie.port}";
                 proxyWebsockets = true;
                 extraConfig = ''
-                  client_max_body_size 20M;
+                  client_max_body_size 50M;
                 '';
               };
             };
