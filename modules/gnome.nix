@@ -65,6 +65,8 @@ in
         NIXOS_OZONE_WL = "1";
       };
 
+      fonts.packages = with pkgs; [ iosevka ];
+
       # Enable the X11 windowing system.
       services.xserver.enable = true;
 
