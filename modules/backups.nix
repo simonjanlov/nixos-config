@@ -12,22 +12,31 @@ in
     {
       enable = mkOption {
         default = builtins.length cfg.paths > 0;
-        description = ''Whether to enable backups for this host'';
+        description = ''
+          Whether to enable backups for this host.
+        '';
       };
       paths = mkOption {
         default = [];
         type = types.listOf types.path;
-        description = ''List of paths to backup'';
+        description = ''
+          List of paths to backup.
+        '';
       };
       exclude = mkOption {
         default = [];
         type = types.listOf types.path;
-        description = ''List of paths to exclude'';
+        description = ''
+          List of paths to exclude.
+        '';
       };
       time = mkOption {
         default = "11:00";
         type = types.str;
-        description = ''What time to run the backup'';
+        description = ''
+          What time to run the backup.
+        '';
+      };
       };
     };
 
