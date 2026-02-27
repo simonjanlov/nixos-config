@@ -40,8 +40,8 @@
   networking.networkmanager.dns = "systemd-resolved";
   networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   services.resolved.enable = true;
-  services.resolved.fallbackDns = [ ];
-  services.resolved.llmnr = "false";
+  services.resolved.settings.Resolve.FallbackDNS = [ ];
+  services.resolved.settings.Resolve.LLMNR = "false";
 
 
   system.copySystemConfiguration = true;
