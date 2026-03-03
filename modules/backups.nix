@@ -76,8 +76,8 @@ in
                 transfers = "30";
               };
               repository = "rclone:gdrive:${config.networking.hostName}";
-              # runCheck = true;
-              # checkOpts = [ "--read-data-subset=10%" ];
+              runCheck = true;
+              checkOpts = [ "--read-data-subset=10%" ];
               timerConfig = {
                 OnCalendar = cfg.time;
               };
