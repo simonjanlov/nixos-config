@@ -69,6 +69,7 @@ in
                 "--keep-weekly 5"
                 "--keep-monthly 12"
                 "--keep-yearly 3"
+                "--group-by host"
               ];
               rcloneOptions = {
                 checksum = true;
