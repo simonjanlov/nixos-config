@@ -84,8 +84,8 @@ in
             }
             # If current system is the deployment host
             (mkIf config.simon.deployment-tools.enable {
-              passwordFile = "/home/simon/.keys/restic-password";
-              rcloneConfigFile = "/home/simon/.config/rclone/rclone.conf";
+              passwordFile = "/etc/keys/restic-password";
+              rcloneConfigFile = "/etc/keys/rclone.conf";
             })
             # Else
             (mkIf (!config.simon.deployment-tools.enable) {
