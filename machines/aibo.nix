@@ -19,6 +19,8 @@
     "/home/simon/.cache"
     "/home/simon/.mozilla"
     "/home/simon/.emacs.d"
+    "/home/simon/.config/Slack/Cache"
+    "/home/simon/Downloads"
   ];
 
   services.pipewire = {
