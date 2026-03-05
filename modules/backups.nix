@@ -69,22 +69,23 @@ in
                 "--keep-weekly 5"
                 "--keep-monthly 12"
                 "--keep-yearly 3"
+                "--group-by host"
               ];
               rcloneOptions = {
                 checksum = true;
                 transfers = "30";
               };
               repository = "rclone:gdrive:${config.networking.hostName}";
-              # runCheck = true;
-              # checkOpts = [ "--read-data-subset=10%" ];
+              runCheck = true;
+              checkOpts = [ "--read-data-subset=10%" ];
               timerConfig = {
                 OnCalendar = cfg.time;
               };
             }
             # If current system is the deployment host
             (mkIf config.simon.deployment-tools.enable {
-              passwordFile = "/home/simon/.keys/restic-password";
-              rcloneConfigFile = "/home/simon/.config/rclone/rclone.conf";
+              passwordFile = "/etc/keys/restic-password";
+              rcloneConfigFile = "/etc/keys/rclone.conf";
             })
             # Else
             (mkIf (!config.simon.deployment-tools.enable) {
