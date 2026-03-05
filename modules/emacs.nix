@@ -26,7 +26,7 @@ in
       environment.systemPackages =
         [
           (pkgs.emacsWithPackagesFromUsePackage {
-            config = ./dotfiles/emacs-config.org;
+            config = ./dotfiles/emacs-config-simon.org;
             defaultInitFile = true;
             package = pkgs.emacs.override {
               withPgtk = true;
