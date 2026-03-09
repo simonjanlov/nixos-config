@@ -20,7 +20,8 @@ in
       simon.gnome.enable = true;
 
       environment.systemPackages = [
-          pkgs.gnomeExtensions.paperwm
+        pkgs.gnomeExtensions.paperwm
+        pkgs.gnomeExtensions.unite
         ];
 
       home-manager.users.simon = { ... }:
@@ -30,7 +31,21 @@ in
               "org/gnome/shell" = {
                 enabled-extensions = [
                   "paperwm@paperwm.github.com"
+                  "unite@hardpixel.eu"
                 ];
+              };
+
+              "org/gnome/shell/extensions/unite" = {
+                extend-left-box = false;
+                greyscale-tray-icons = false;
+                hide-activities-button = "never";
+                hide-app-menu-icon = true;
+                notifications-position = "right";
+                reduce-panel-spacing = true;
+                show-appmenu-button = false;
+                show-desktop-name = false;
+                show-legacy-tray = true;
+                use-activities-text = false;
               };
             };
         };

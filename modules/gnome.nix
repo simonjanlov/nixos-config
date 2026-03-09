@@ -57,7 +57,6 @@ in
           gimp
           element-desktop
           gnomeExtensions.launch-new-instance
-          gnomeExtensions.unite
         ];
 
       environment.sessionVariables = {
