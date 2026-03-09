@@ -35,6 +35,31 @@ in
                 ];
               };
 
+              "org/gnome/shell/extensions/paperwm" = {
+                cycle-height-steps = [0.38195000000000001 0.5 0.61804000000000003];
+                cycle-width-steps = [0.38195000000000001 0.5 0.61804000000000003];
+                disable-topbar-styling = false;
+                edge-preview-enable = true;
+                edge-preview-scale = 0.14999999999999999;
+                horizontal-margin = 8;
+                selection-border-radius-bottom = 4;
+                selection-border-radius-top = 8;
+                selection-border-size = 4;
+                show-focus-mode-icon = false;
+                show-open-position-icon = false;
+                show-window-position-bar = false;
+                show-workspace-indicator = false;
+                use-default-background = true;
+                vertical-margin = 10;
+                vertical-margin-bottom = 10;
+                window-gap = 9;
+              };
+
+              "org/gnome/shell/extensions/paperwm/keybindings" = {
+                switch-first=[""];
+                take-window=[""];
+              };
+
               "org/gnome/shell/extensions/unite" = {
                 extend-left-box = false;
                 greyscale-tray-icons = false;
