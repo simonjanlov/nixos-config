@@ -92,6 +92,28 @@ in
               };
               colors = {
                 alpha = 0.97;
+
+                # ef-dream based theme
+                background = "222025";
+                foreground = "d9ccbb";
+                regular0 = "23222a";
+                regular1 = "e06c9f";
+                regular2 = "59a894";
+                regular3 = "d19a66";
+                regular4 = "6fa4d8";
+                regular5 = "f0a6c4";
+                regular6 = "5e7fa6";
+                regular7 = "d0c7bb";
+                bright0 = "2c2a33";
+                bright1 = "ff8ab5";
+                bright2 = "7fd1bd";
+                bright3 = "e6c89a";
+                bright4 = "8fc1ff";
+                bright5 = "ffb3d1";
+                bright6 = "7aa7c7";
+                bright7 = "ffffff";
+                selection-background = "52355f";
+                selection-foreground = "d9ccbb";
               };
               csd = {
                 size = 0;
