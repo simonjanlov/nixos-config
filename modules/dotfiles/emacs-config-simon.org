@@ -1281,10 +1281,9 @@
      (use-package ef-themes
        :ensure t
        :config
-       (modus-themes-load-theme 'ef-elea-dark))
+       (modus-themes-load-theme 'ef-dream))
 
    #+end_src
-
 
 ** Modeline
 
@@ -1319,7 +1318,6 @@
    #+end_src
 
 ** [[https://stackoverflow.com/questions/3984730/emacs-gui-with-emacs-daemon-not-loading-fonts-correctly][Set font]]
-
    #+begin_src emacs-lisp :tangle yes
 
      (add-to-list 'default-frame-alist '(font . "Iosevka 11"))
