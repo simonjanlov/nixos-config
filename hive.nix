@@ -32,6 +32,7 @@
         "vaultwarden-env".keyFile = "/etc/nixos/secrets/vaultwarden.env";
         "vaultwarden-env".user = "vaultwarden";
         "mealie-secrets".keyFile = "/etc/nixos/secrets/mealie-secrets-kumo";
+        "nextcloud-admin-pw".keyFile = "/etc/nixos/secrets/nextcloud-admin-pw";
       };
     };
 

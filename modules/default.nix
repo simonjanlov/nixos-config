@@ -20,5 +20,6 @@
       ./home-assistant.nix
       ./mealie.nix
       ./local-llm.nix
+      ./nextcloud.nix
     ];
 }
