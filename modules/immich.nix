@@ -1,7 +1,6 @@
 { config, lib, ... }:
 let
   cfg = config.simon.immich;
-  keys = config.deployment.keys;
 in
 {
   options.simon.immich =
