@@ -221,6 +221,16 @@
 
    #+end_src
 
+** Disable menu bar
+
+   Disable the menu bar at the top
+
+   #+begin_src emacs-lisp :tangle yes
+
+     (menu-bar-mode -1)
+
+   #+end_src
+
 ** Disable scroll bar
 
    Disable the scroll bar in X / Wayland - I don't need or use it.
