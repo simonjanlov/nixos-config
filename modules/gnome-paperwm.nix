@@ -61,16 +61,23 @@ in
               };
 
               "org/gnome/shell/extensions/unite" = {
+                autofocus-windows = false;
+                enable-titlebar-actions = false;
                 extend-left-box = false;
                 greyscale-tray-icons = false;
                 hide-activities-button = "never";
                 hide-app-menu-icon = true;
+                hide-window-titlebars = "always";
                 notifications-position = "right";
                 reduce-panel-spacing = true;
+                restrict-to-primary-screen = false;
                 show-appmenu-button = false;
                 show-desktop-name = false;
                 show-legacy-tray = true;
+                show-window-buttons = "never";
+                show-window-title = "never";
                 use-activities-text = false;
+                window-buttons-placement = "right";
               };
             };
         };
