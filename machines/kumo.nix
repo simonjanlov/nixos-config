@@ -10,6 +10,7 @@
 
   simon.isStableSystem = true;
 
+  simon.nextcloud.enable = true;
   simon.llm.openWebUI.enable = true;
   simon.mealie.enable = true;
   simon.immich.enable = true;
