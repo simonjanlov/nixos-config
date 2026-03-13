@@ -78,6 +78,26 @@ in
       "${config.services.nextcloud.home}"
     ];
 
+    # TODO: Implement the following more elegantly
+    systemd.services.nextcloud-setup =
+        {
+          after = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+          wants = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+        };
+
+    systemd.services.nextcloud-update-db =
+        {
+          after = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+          wants = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+        };
+
+    systemd.services.phpfpm-nextcloud =
+        {
+          after = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+          wants = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+        };
+
+
     simon.nginx-base.enable = true;
 
     services.nginx.virtualHosts.${config.services.nextcloud.hostName} =
