@@ -89,7 +89,7 @@ in
               main = {
                 font = "monospace:size=9";
               };
-              colors = {
+              colors-dark = {
                 alpha = 0.97;
 
                 # ef-dream based theme
