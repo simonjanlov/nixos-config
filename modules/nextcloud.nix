@@ -56,7 +56,7 @@ in
       secretFile = "${keys.nextcloud-secrets.path}";
       maxUploadSize = "10G";
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit contacts notes tasks;
+        inherit contacts notes tasks music;
       };
       phpOptions = {
         "opcache.interned_strings_buffer" = "64";
