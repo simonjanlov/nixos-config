@@ -10,7 +10,7 @@ in
         default = false;
         example = true;
         description = ''
-        Whether to install tools relevant for the server deployment host
+          Whether to install tools relevant for the server deployment host.
         '';
       };
     };

@@ -10,7 +10,7 @@ in
         example = true;
         description = ''
           Whether to enable the immich photo and video management service
-          '';
+        '';
       };
     };
 

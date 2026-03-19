@@ -4,92 +4,93 @@ let
   keys = config.deployment.keys;
 in
 {
-  options.simon.nextcloud = {
-    enable = lib.mkOption {
-      default = false;
-      example = true;
-      description = ''
-        Whether to host Nextcloud on this machine.
-      '';
-    };
-  };
-
-  config = lib.mkIf cfg.enable {
-
-    services.nextcloud = {
-      enable = true;
-      package = pkgs.nextcloud33;
-      hostName = "nextcloud.${config.simon.domain.homelab.domain}";
-      database.createLocally = true;
-      https = true;
-      datadir = "/srv/nextcloud";
-      config = {
-        dbtype = "pgsql";
-        adminuser = "admin";
-        adminpassFile = "${keys.nextcloud-admin-pw.path}";
-      };
-      settings = {
-        maintenance_window_start = 1;
-        default_phone_region = "SE";
-        mail_smtphost = "smtp.gmail.com";
-        mail_smtpport = 465;
-        mail_smtpsecure = "ssl";
-        mail_smtpauth = true;
-        mail_smtpname = "simon.janlov@gmail.com";
-        enabledPreviewProviders = [
-          "OC\\Preview\\PNG"
-          "OC\\Preview\\JPEG"
-          "OC\\Preview\\GIF"
-          "OC\\Preview\\BMP"
-          "OC\\Preview\\MP3"
-          "OC\\Preview\\XBitmap"
-          "OC\\Preview\\Krita"
-          "OC\\Preview\\WebP"
-          "OC\\Preview\\MarkDown"
-          "OC\\Preview\\TXT"
-          "OC\\Preview\\OpenDocument"
-          "OC\\Preview\\HEIC"
-        ];
-        "overwrite.cli.url" = "https://${config.services.nextcloud.hostName}"; # default value "http://localhost"
-      };
-
-      secretFile = "${keys.nextcloud-secrets.path}";
-      maxUploadSize = "10G";
-      extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit contacts notes tasks music;
-      };
-      phpOptions = {
-        "opcache.interned_strings_buffer" = "64";
-        "opcache.memory_consumption" = "256";
-        "opcache.jit" = "1255";
-        "opcache.jit_buffer_size" = "8M";
-        "opcache.validate_timestamps" = "0";
+  options.simon.nextcloud =
+    {
+      enable = lib.mkOption {
+        default = false;
+        example = true;
+        description = ''
+          Whether to host Nextcloud on this machine.
+        '';
       };
     };
 
-    simon.backups.paths = [
-      "${config.services.nextcloud.datadir}"
-      "${config.services.nextcloud.home}"
-    ];
+  config = lib.mkIf cfg.enable
+    {
+      services.nextcloud = {
+        enable = true;
+        package = pkgs.nextcloud33;
+        hostName = "nextcloud.${config.simon.domain.homelab.domain}";
+        database.createLocally = true;
+        https = true;
+        datadir = "/srv/nextcloud";
+        config = {
+          dbtype = "pgsql";
+          adminuser = "admin";
+          adminpassFile = "${keys.nextcloud-admin-pw.path}";
+        };
+        settings = {
+          maintenance_window_start = 1;
+          default_phone_region = "SE";
+          mail_smtphost = "smtp.gmail.com";
+          mail_smtpport = 465;
+          mail_smtpsecure = "ssl";
+          mail_smtpauth = true;
+          mail_smtpname = "simon.janlov@gmail.com";
+          enabledPreviewProviders = [
+            "OC\\Preview\\PNG"
+            "OC\\Preview\\JPEG"
+            "OC\\Preview\\GIF"
+            "OC\\Preview\\BMP"
+            "OC\\Preview\\MP3"
+            "OC\\Preview\\XBitmap"
+            "OC\\Preview\\Krita"
+            "OC\\Preview\\WebP"
+            "OC\\Preview\\MarkDown"
+            "OC\\Preview\\TXT"
+            "OC\\Preview\\OpenDocument"
+            "OC\\Preview\\HEIC"
+          ];
+          "overwrite.cli.url" = "https://${config.services.nextcloud.hostName}"; # default value "http://localhost"
+        };
 
-    systemd.services = lib.genAttrs [
-      "nextcloud-setup"
-      "nextcloud-update-db"
-      "phpfpm-nextcloud"
-    ]
-      (name: {
-        after = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
-        wants = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
-      });
-
-    simon.nginx-base.enable = true;
-
-    services.nginx.virtualHosts.${config.services.nextcloud.hostName} =
-      {
-        forceSSL = true;
-        enableACME = true;
+        secretFile = "${keys.nextcloud-secrets.path}";
+        maxUploadSize = "10G";
+        extraApps = with config.services.nextcloud.package.packages.apps; {
+          inherit contacts notes tasks music;
+        };
+        phpOptions = {
+          "opcache.interned_strings_buffer" = "64";
+          "opcache.memory_consumption" = "256";
+          "opcache.jit" = "1255";
+          "opcache.jit_buffer_size" = "8M";
+          "opcache.validate_timestamps" = "0";
+        };
       };
-  };
+
+      simon.backups.paths = [
+        "${config.services.nextcloud.datadir}"
+        "${config.services.nextcloud.home}"
+      ];
+
+      systemd.services = lib.genAttrs [
+        "nextcloud-setup"
+        "nextcloud-update-db"
+        "phpfpm-nextcloud"
+      ]
+        (name: {
+          after = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+          wants = [ "nextcloud-admin-pw-key.service" "nextcloud-secrets-key.service" ];
+        });
+
+      simon.nginx-base.enable = true;
+
+      services.nginx.virtualHosts.${config.services.nextcloud.hostName} =
+        {
+          forceSSL = true;
+          enableACME = true;
+        };
+    };
 }
 
 # Reasonable to add something like this but without the agenix

@@ -11,7 +11,7 @@ in
         type = lib.types.bool;
         example = false;
         description = ''
-        Whether to enable my Emacs configuration.
+          Whether to enable my Emacs configuration.
         '';
       };
     };

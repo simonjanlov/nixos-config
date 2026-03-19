@@ -14,8 +14,8 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to enable IP banning with fail2ban
-          '';
+          Whether to enable IP banning with fail2ban.
+        '';
       };
     };
   config = lib.mkIf cfg.enable

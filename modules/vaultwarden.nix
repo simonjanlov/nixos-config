@@ -10,7 +10,7 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to host the Vaultwarden secret management service
+          Whether to host the Vaultwarden secret management service.
         '';
       };
     };

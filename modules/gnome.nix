@@ -13,14 +13,14 @@ in
         default = false;
         example = true;
         description = ''
-        Whether to enable the gnome desktop.
+          Whether to enable the gnome desktop.
         '';
       };
       custom-keys = lib.mkOption {
         default = true;
         example = false;
         description = ''
-        Whether to enable the custom shortcuts.
+          Whether to enable the custom shortcuts.
         '';
       };
     };

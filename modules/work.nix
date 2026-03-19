@@ -11,7 +11,7 @@ in
           default = false;
           example = true;
           description = ''
-          Whether to enable work-related settings
+            Whether to enable work-related settings.
           '';
         };
     };

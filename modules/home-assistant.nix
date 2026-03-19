@@ -9,8 +9,8 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to host the Home Assistant service
-          '';
+          Whether to host the Home Assistant service.
+        '';
       };
     };
 

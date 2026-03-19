@@ -10,8 +10,8 @@ in
         default = false;
         example = true;
         description = ''
-          Nginx basic config to be enabled by other nginx-dependent modules
-          '';
+          Nginx basic config to be enabled by other nginx-dependent modules.
+        '';
       };
     };
 

@@ -14,8 +14,8 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to enable the netdata monitoring service
-          '';
+          Whether to enable the netdata monitoring service.
+        '';
       };
     };
 

@@ -10,8 +10,8 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to enable the PaperWM tiling window manager (Gnome Shell extension)
-          '';
+          Whether to enable the PaperWM tiling window manager (Gnome Shell extension).
+        '';
       };
     };
 

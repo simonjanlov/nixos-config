@@ -7,7 +7,7 @@
         default = "dyn.iikon.se";
         type = lib.types.str;
         description = ''
-        Domain to use for publicly hosted services
+          Domain to use for publicly hosted services.
         '';
       };
     };

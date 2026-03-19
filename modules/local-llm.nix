@@ -13,15 +13,15 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to host local LLM using ollama
-          '';
+          Whether to host local LLM using ollama.
+        '';
       };
       openWebUI.enable = mkOption {
         default = false;
         example = true;
         description = ''
-          Whether to enable the LLM with a Web UI
-          '';
+          Whether to enable the LLM with a Web UI.
+        '';
       };
     };
 

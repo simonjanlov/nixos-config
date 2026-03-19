@@ -10,8 +10,8 @@ in
         default = false;
         example = true;
         description = ''
-          Whether to host the Mealie recipe service
-          '';
+          Whether to host the Mealie recipe service.
+        '';
       };
     };
   config = lib.mkIf cfg.enable
