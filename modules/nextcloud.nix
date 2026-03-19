@@ -67,12 +67,6 @@ in
       };
     };
 
-    # services.onlyoffice = {
-    #   enable = true;
-    #   hostname = "onlyoffice.${config.simon.domain.homelab.domain}";
-    #   port = 8002;
-    # };
-
     simon.backups.paths = [
       "${config.services.nextcloud.datadir}"
       "${config.services.nextcloud.home}"
