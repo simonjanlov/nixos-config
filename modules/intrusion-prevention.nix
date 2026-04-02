@@ -22,7 +22,10 @@ in
     {
       services.fail2ban = {
         enable = true;
-        ignoreIP = [ "192.168.0.0/16" ];
+        ignoreIP = [
+          "192.168.0.0/16"
+          "212.116.74.54" # Office IP
+        ];
         bantime = "24h";
 
         jails = lib.mkMerge [
