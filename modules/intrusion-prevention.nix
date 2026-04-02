@@ -69,7 +69,7 @@ in
           "fail2ban/filter.d/nginx-4xx.conf".text = ''
           [Definition]
 
-          failregex = ^.*nginx: <HOST>.*".*" (401|400|403|404|444) .*$
+          failregex = ^.*nginx: <HOST>.*".*" (401|400|403|429|444) .*$
 
           ignoreregex =
 
