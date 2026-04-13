@@ -19,7 +19,7 @@ in
       virtualisation.oci-containers.containers = {
         home-assistant = {
           environment.TZ = config.time.timeZone;
-          image = "ghcr.io/home-assistant/home-assistant:2026.2.1";
+          image = "ghcr.io/home-assistant/home-assistant:2026.4.2";
           extraOptions = [
             "--network=host"
             "--device=/dev/ttyUSB0:/dev/ttyUSB0"
