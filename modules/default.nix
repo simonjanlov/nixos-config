@@ -22,5 +22,6 @@
       ./local-llm.nix
       ./nextcloud.nix
       ./collabora.nix
+      ./powerline-go.nix
     ];
 }
