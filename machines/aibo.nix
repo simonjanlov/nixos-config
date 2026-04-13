@@ -13,6 +13,7 @@
   simon.work.enable = true;
 
   simon.gnome-paperwm.enable = true;
+  simon.powerline-go.enable = true;
 
   simon.backups.paths = [ "/home/simon" ];
   simon.backups.exclude = [
