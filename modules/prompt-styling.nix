@@ -27,7 +27,7 @@ in
       home-manager.users.${config.simon.username} = {
         programs.bash.initExtra = ''
           function _update_ps1() {
-            PS1="$(${pkgs.powerline-go}/bin/powerline-go -error $? -jobs $(jobs -p | wc -l))"
+            PS1="$(${pkgs.powerline-go}/bin/powerline-go -error $? -jobs $(jobs -p | wc -l) -newline -cwd-mode "fancy" -git-mode "compact")"
 
             # Uncomment the following line to automatically clear errors after showing
             # them once. This not only clears the error for powerline-go, but also for
