@@ -27,8 +27,13 @@ in
         appendConfig = ''
           error_log stderr warn;
           '';
-        appendHttpConfig = ''
-          access_log syslog:server=unix:/dev/log combined;
+
+        commonHttpConfig = ''
+          log_format withhost '$remote_addr - $remote_user [$time_local] '
+                              '$host '
+                              '"$request" $status $body_bytes_sent '
+                              '"$http_referer" "$http_user_agent" "$gzip_ratio"';
+          access_log syslog:server=unix:/dev/log withhost;
           '';
 
         virtualHosts =
