@@ -16,6 +16,12 @@ in
 
   config = lib.mkIf cfg.enable
     {
+      # home-manager.users.${config.simon.username} = {
+      #   programs.powerline-go.enable = true;
+      #   programs.powerline-go.newline = true;
+      # };
+
+
       environment.systemPackages = [ pkgs.powerline-go ];
 
       home-manager.users.${config.simon.username} = {
