@@ -90,6 +90,11 @@ in
           forceSSL = true;
           enableACME = true;
         };
+
+      networking.hosts = {
+        "127.0.0.1" = [ config.services.nextcloud.hostName ];
+        "::1" = [ config.services.nextcloud.hostName ];
+      };
     };
 }
 
