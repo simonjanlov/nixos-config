@@ -64,7 +64,10 @@ in
         NIXOS_OZONE_WL = "1";
       };
 
-      fonts.packages = with pkgs; [ iosevka ];
+      fonts.packages = with pkgs; [
+        iosevka
+        nerd-fonts.departure-mono
+      ];
 
       # Enable the X11 windowing system.
       services.xserver.enable = true;
