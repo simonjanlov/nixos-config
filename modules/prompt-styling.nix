@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.simon.powerline-go;
+  cfg = config.simon.prompt-styling;
 in
 {
-  options.simon.powerline-go =
+  options.simon.prompt-styling =
     {
       enable = lib.mkOption {
         default = false;
         example = true;
         description = ''
-          Whether to enable the powerline command prompt for bash.
+          Whether to apply custom teminal prompt styling.
         '';
       };
     };
