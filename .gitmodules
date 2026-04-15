@@ -16,3 +16,7 @@
 	path = modules/home-manager-stable
 	url = https://github.com/nix-community/home-manager.git
 	branch = release-25.11
+[submodule "modules/nixpkgs-master"]
+	path = modules/nixpkgs-master
+	url = https://github.com/NixOS/nixpkgs.git
+	branch = master
