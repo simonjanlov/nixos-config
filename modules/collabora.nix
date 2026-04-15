@@ -84,8 +84,8 @@ in
         };
 
       networking.hosts = {
-        "127.0.0.1" = [ "${config.services.nextcloud.hostName}"  "collabora.dyn.iikon.se" ];
-        "::1" = [ "${config.services.nextcloud.hostName}" "collabora.dyn.iikon.se" ];
+        "127.0.0.1" = [ "${config.services.nextcloud.hostName}" "${config.services.collabora-online.server_name}" ];
+        "::1" = [ "${config.services.nextcloud.hostName}" "${config.services.collabora-online.server_name}" ];
       };
     };
 }
