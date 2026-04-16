@@ -16,6 +16,19 @@ in
 
   config = lib.mkIf cfg.enable
     {
+      ### STARSHIP HOME MANAGER ###
+
+      home-manager.users.${config.simon.username} = {
+        programs.foot.settings.main.font = lib.mkForce "DejaVuSansM Nerd Font Mono:size=10";
+
+        programs.starship.enable = true;
+
+        home.file.".config/starship.toml".source = dotfiles/starship-config.toml;
+      };
+
+
+      ### POWERLINE-GO HOME MANAGER NATIVE ###
+
       # home-manager.users.${config.simon.username} = {
       #   programs.powerline-go.enable = true;
       #   programs.powerline-go.newline = true;
