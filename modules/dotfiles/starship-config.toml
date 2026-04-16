@@ -1,25 +1,25 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
+[░▒▓](#a385ab)\
+[  ](bg:#a385ab fg:#090c0c)\
+[](bg:#6e5375 fg:#a385ab)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:#6e5375 bg:#4d3b52)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#212736)\
+[](fg:#4d3b52 bg:#3c2e40)\
 $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#212736 bg:#1d2230)\
+[](fg:#3c2e40 bg:#362b38)\
 $time\
-[ ](fg:#1d2230)\
+[ ](fg:#362b38)\
 \n$character"""
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#e3e5e5 bg:#6e5375"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -32,35 +32,35 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:#4d3b52"
+format = '[[ $symbol $branch ](fg:#ecaefc bg:#4d3b52)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:#4d3b52"
+format = '[[($all_status$ahead_behind )](fg:#ecaefc bg:#4d3b52)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:#3c2e40"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#3c2e40)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:#3c2e40"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#3c2e40)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:#3c2e40"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#3c2e40)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:#3c2e40"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#3c2e40)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "bg:#362b38"
+format = '[[  $time ](fg:#f1c5fc bg:#362b38)]($style)'
