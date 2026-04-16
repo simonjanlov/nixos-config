@@ -67,6 +67,7 @@ in
       fonts.packages = with pkgs; [
         iosevka
         nerd-fonts.departure-mono
+        nerd-fonts.dejavu-sans-mono
       ];
 
       # Enable the X11 windowing system.
