@@ -16,7 +16,7 @@ in
 
   config = lib.mkIf cfg.enable
     {
-      ### STARSHIP HOME MANAGER ###
+      ### STARSHIP ###
 
       home-manager.users.${config.simon.username} = {
         programs.foot.settings.main.font = lib.mkForce "DejaVuSansM Nerd Font Mono:size=10";
