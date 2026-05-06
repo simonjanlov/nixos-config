@@ -2,6 +2,23 @@
 
 let
   cfg = config.simon.emacs;
+
+  emacs = pkgs.emacsWithPackagesFromUsePackage {
+    config = ./dotfiles/emacs-config-simon.org;
+    defaultInitFile = true;
+  };
+
+  languageServers = with pkgs; [
+    nil
+    bash-language-server
+    python3Packages.python-lsp-server
+  ];
+
+  emacsWithLanguageServers = pkgs.runCommand "emacs-with-language-servers" {
+    nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
+      makeWrapper ${emacs}/bin/emacs $out/bin/emacs --prefix PATH : ${lib.makeBinPath languageServers }
+      ln -s ${emacs}/share $out/share
+    '';
 in
 {
   options.simon.emacs =
@@ -25,10 +42,7 @@ in
 
       environment.systemPackages =
         [
-          (pkgs.emacsWithPackagesFromUsePackage {
-            config = ./dotfiles/emacs-config-simon.org;
-            defaultInitFile = true;
-          })
+          emacsWithLanguageServers
         ];
 
       environment.sessionVariables.EDITOR = "emacs";
