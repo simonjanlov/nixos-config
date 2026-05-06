@@ -19,7 +19,7 @@ in
       ### STARSHIP ###
 
       home-manager.users.${config.simon.username} = {
-        programs.foot.settings.main.font = lib.mkForce "DejaVuSansM Nerd Font Mono:size=10";
+        programs.foot.settings.main.font = lib.mkForce "DejaVuSansM Nerd Font Mono:size=9";
 
         programs.starship.enable = true;
 
