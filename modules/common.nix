@@ -103,6 +103,7 @@
         tree
         killall
         htop
+        btop
         fzf
         fd
         curl
