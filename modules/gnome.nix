@@ -121,6 +121,9 @@ in
               csd = {
                 size = 0;
               };
+              scrollback = {
+                lines = 20000;
+              };
             };
           };
 
