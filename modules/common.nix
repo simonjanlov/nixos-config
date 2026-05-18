@@ -107,7 +107,6 @@
         fzf
         fd
         curl
-        dconf-editor
         sshfs-fuse
         exfat
         pv

@@ -48,6 +48,7 @@ in
       environment.systemPackages = with pkgs;
         [
           gparted
+          dconf-editor
           vscode
           firefox
           slack
