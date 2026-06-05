@@ -37,6 +37,7 @@
 
   networking.hostName = "kumo";
   networking.useDHCP = false;
+  networking.nameservers = [ "192.168.1.1" ];
 
   systemd.network.enable = true;
   systemd.network.networks."wired" = {
@@ -48,9 +49,6 @@
   };
 
   services.resolved.enable = true;
-  services.resolved.extraConfig = ''
-    DNS=192.168.1.1
-  '';
 
   networking.networkmanager.enable = false;
 
