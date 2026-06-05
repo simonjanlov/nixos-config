@@ -27,23 +27,23 @@ in
 
   config = mkIf cfg.enable
     {
-      nixpkgs.overlays =
-        let
-          pkgs_251130 = (import
-            (builtins.fetchGit {
-              name = "nixos-2025_11_30";
-              url = "https://github.com/NixOS/nixpkgs";
-              # ref = "nixos-unstable";
-              rev = "2d293cbfa5a793b4c50d17c05ef9e385b90edf6c";
-              shallow = true;
-            }) {}
-          );
-        in
-          [
-            (final: prev: {
-              wireplumber = pkgs_251130.wireplumber;
-            })
-          ];
+      # nixpkgs.overlays =
+      #   let
+      #     pkgs_251130 = (import
+      #       (builtins.fetchGit {
+      #         name = "nixos-2025_11_30";
+      #         url = "https://github.com/NixOS/nixpkgs";
+      #         # ref = "nixos-unstable";
+      #         rev = "2d293cbfa5a793b4c50d17c05ef9e385b90edf6c";
+      #         shallow = true;
+      #       }) {}
+      #     );
+      #   in
+      #     [
+      #       (final: prev: {
+      #         wireplumber = pkgs_251130.wireplumber;
+      #       })
+      #     ];
 
       environment.systemPackages = with pkgs;
         [
@@ -52,7 +52,7 @@ in
           vscode
           firefox
           slack
-          bitwarden-desktop
+          # bitwarden-desktop
           gnome-tweaks
           spotify
           gimp
