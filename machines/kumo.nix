@@ -96,6 +96,9 @@
 
   ### HARDWARE CONFIGURATION ###
 
+  # TODO: Adapt config for initrd.systemd usage
+  boot.initrd.systemd.enable = false;
+
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/082e9a9b-bac9-434f-9795-c456dd1935c5";
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "uas" "usbhid" "sd_mod" ];
