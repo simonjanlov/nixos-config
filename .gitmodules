@@ -11,11 +11,11 @@
 [submodule "modules/nixpkgs-stable"]
 	path = modules/nixpkgs-stable
 	url = https://github.com/NixOS/nixpkgs.git
-	branch = nixos-25.11
+	branch = nixos-26.05
 [submodule "modules/home-manager-stable"]
 	path = modules/home-manager-stable
 	url = https://github.com/nix-community/home-manager.git
-	branch = release-25.11
+	branch = release-26.05
 [submodule "modules/nixpkgs-master"]
 	path = modules/nixpkgs-master
 	url = https://github.com/NixOS/nixpkgs.git
