@@ -53,6 +53,7 @@ in
                 vertical-margin = 10;
                 vertical-margin-bottom = 10;
                 window-gap = 9;
+                winprops = [ ''{"wm_class":"foot","preferredWidth":"50%"}'' ];
               };
 
               "org/gnome/shell/extensions/paperwm/keybindings" = {
