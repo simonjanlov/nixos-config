@@ -6,6 +6,15 @@ let
   emacs = pkgs.emacsWithPackagesFromUsePackage {
     config = ./dotfiles/emacs-config-simon.org;
     defaultInitFile = true;
+
+    override = final: prev: {
+      projectile = prev.melpaPackages.projectile.overrideAttrs (oldAttrs: oldAttrs // {
+        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [ final.consult ];
+      });
+      treemacs-projectile = prev.melpaPackages.treemacs-projectile.overrideAttrs (oldAttrs: oldAttrs // {
+        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [ final.projectile ];
+      });
+    };
   };
 
   languageServers = with pkgs; [
