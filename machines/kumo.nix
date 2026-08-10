@@ -150,7 +150,6 @@
   boot.swraid.enable = true;
 
   fileSystems."/srv" = {
-    depends = [ "/" ]; # remove?
     device = "/dev/mapper/raid";
     fsType = "btrfs";
     options = [ "subvol=subvol_root" ];
