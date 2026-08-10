@@ -96,9 +96,6 @@
 
   ### HARDWARE CONFIGURATION ###
 
-  # TODO: Adapt config for initrd.systemd usage
-  boot.initrd.systemd.enable = false;
-
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/082e9a9b-bac9-434f-9795-c456dd1935c5";
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "uas" "usbhid" "sd_mod" ];
@@ -120,7 +117,10 @@
   fileSystems."/" =
     { device = "/dev/root_vg/root";
       fsType = "btrfs";
-      options = [ "subvol=root" ];
+      options = [
+        "subvol=root"
+        "x-systemd.device-timeout=infinity"
+      ];
     };
 
   fileSystems."/boot" =
@@ -157,7 +157,7 @@
     encrypted = {
       enable = true;
       blkDev = "/dev/disk/by-id/md-uuid-b610a794:6e81ba96:17d5401b:751b1691";
-      keyFile = "/mnt-root/etc/secrets/raid-keyfile";
+      keyFile = "/sysroot/etc/secrets/raid-keyfile";
       label = "raid";
     };
   };
