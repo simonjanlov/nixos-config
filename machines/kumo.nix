@@ -118,7 +118,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2ec4d25e-d197-4e0e-9428-acbc3ca6b3bb";
+    { device = "/dev/root_vg/root";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
@@ -130,21 +130,19 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/2ec4d25e-d197-4e0e-9428-acbc3ca6b3bb";
+    { device = "/dev/root_vg/root";
       fsType = "btrfs";
       neededForBoot = true;
       options = [ "subvol=home" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/2ec4d25e-d197-4e0e-9428-acbc3ca6b3bb";
+    { device = "/dev/root_vg/root";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/a1d80591-e690-4bec-a573-0c3712dfad11"; }
-    ];
+  swapDevices = [ { device = "/dev/root_vg/swap"; } ];
 
 
   # APP-DATA RAID #
