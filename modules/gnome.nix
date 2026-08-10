@@ -52,7 +52,7 @@ in
           vscode
           firefox
           slack
-          # bitwarden-desktop
+          bitwarden-desktop
           gnome-tweaks
           spotify
           gimp
