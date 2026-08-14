@@ -18,6 +18,7 @@
   simon.vaultwarden.enable = true;
   simon.home-assistant.enable = true;
   simon.intrusion-prevention.enable = true;
+  simon.msmtp.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
