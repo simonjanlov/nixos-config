@@ -23,5 +23,6 @@
       ./nextcloud.nix
       ./collabora.nix
       ./prompt-styling.nix
+      ./msmtp.nix
     ];
 }
