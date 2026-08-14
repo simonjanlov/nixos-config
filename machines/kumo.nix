@@ -148,6 +148,10 @@
   # APP-DATA RAID #
 
   boot.swraid.enable = true;
+  boot.swraid.mdadmConf = ''
+    MAILADDR simon.janlov@gmail.com
+    MAILFROM simon.janlov@gmail.com
+  '';
 
   fileSystems."/srv" = {
     device = "/dev/mapper/raid";
