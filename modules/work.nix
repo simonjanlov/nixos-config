@@ -19,7 +19,8 @@ in
   config = lib.mkIf cfg.enable
     {
       environment.systemPackages = with pkgs; [
-        nomachine-client
+        # nomachine-client
+        ungoogled-chromium
       ];
 
       # Enable CUPS to print documents.
