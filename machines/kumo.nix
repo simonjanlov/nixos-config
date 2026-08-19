@@ -20,6 +20,8 @@
   simon.intrusion-prevention.enable = true;
   simon.msmtp.enable = true;
 
+  simon.backups.paths = [ "/srv/file-storage" ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
