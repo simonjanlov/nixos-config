@@ -71,6 +71,9 @@ in
                 "--keep-yearly 3"
                 "--group-by host"
               ];
+              extraBackupArgs = [
+                "--group-by host"
+              ];
               rcloneOptions = {
                 checksum = true;
                 transfers = "30";
