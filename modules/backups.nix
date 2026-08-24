@@ -2,6 +2,7 @@
 
 let
   cfg = config.simon.backups;
+  hostName = config.networking.hostName;
 
   inherit (lib)
     mkOption
@@ -97,6 +98,9 @@ in
             })
           ];
         };
+
+      deployment.keys."rclone.conf".keyFile = "/etc/nixos/secrets/rclone.conf";
+      deployment.keys."restic-password".keyFile = "/etc/nixos/secrets/restic-pw-${hostName}";
     })
 
     (mkIf cfg.enablePostgresqlBackup {
