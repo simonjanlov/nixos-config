@@ -14,6 +14,8 @@
     deployment = {
       allowLocalDeployment = true;
       targetHost = null;
+      keys."rclone.conf".destDir = "/etc/keys";
+      keys."restic-password".destDir = "/etc/keys";
     };
 
     imports = [ ./machines/aibo.nix ];
