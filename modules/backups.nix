@@ -60,7 +60,7 @@ in
     (mkIf cfg.enable {
       services.restic.backups =
         {
-          gdrive = mkMerge [
+          gdrive =
             {
               exclude = cfg.exclude;
               initialize = true;
@@ -85,18 +85,9 @@ in
               timerConfig = {
                 OnCalendar = cfg.time;
               };
-            }
-            # If current system is the deployment host
-            (mkIf config.simon.deployment-tools.enable {
-              passwordFile = "/etc/keys/restic-password";
-              rcloneConfigFile = "/etc/keys/rclone.conf";
-            })
-            # Else
-            (mkIf (!config.simon.deployment-tools.enable) {
-              passwordFile = config.deployment.keys.restic-password.path;
-              rcloneConfigFile = config.deployment.keys."rclone.conf".path;
-            })
-          ];
+              passwordFile = config.deployment.keys.restic-password.path; #
+              rcloneConfigFile = config.deployment.keys."rclone.conf".path; #
+            };
         };
 
       deployment.keys."rclone.conf".keyFile = "/etc/nixos/secrets/rclone.conf";
