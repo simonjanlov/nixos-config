@@ -51,6 +51,8 @@
     gateway = [ "192.168.1.1" ];
   };
 
+  boot.initrd.systemd.network = config.systemd.network;
+
   services.resolved.enable = true;
 
   networking.networkmanager.enable = false;
@@ -104,7 +106,6 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "uas" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "r8169" ];
 
-  boot.kernelParams = [ "ip=192.168.1.3::192.168.1.1:255.255.255.0:kumo::none" ];
   boot.initrd.network = {
     enable = true;
     ssh.enable = true;
