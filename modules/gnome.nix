@@ -108,7 +108,7 @@ in
                 regular5 = "f0a6c4";
                 regular6 = "5e7fa6";
                 regular7 = "d0c7bb";
-                bright0 = "2c2a33";
+                bright0 = "4d4d5d";
                 bright1 = "ff8ab5";
                 bright2 = "7fd1bd";
                 bright3 = "e6c89a";
