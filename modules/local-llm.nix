@@ -30,6 +30,7 @@ in
     (mkIf cfg.ollama.enable {
       services.ollama = {
         enable = true;
+        package = pkgs.ollama-vulkan;
         loadModels = [
           "llama3.2:3b"
           "gemma3:4b"
@@ -37,7 +38,6 @@ in
           "jobautomation/OpenEuroLLM-Swedish:latest"
         ];
         syncModels = true;
-        # acceleration = "vulkan";
       };
     })
 
