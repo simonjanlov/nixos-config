@@ -19,7 +19,7 @@ in
     {
       services.nextcloud = {
         enable = true;
-        package = pkgs.nextcloud33;
+        package = pkgs.nextcloud34;
         hostName = "nextcloud.${config.simon.domain.homelab.domain}";
         database.createLocally = true;
         https = true;
