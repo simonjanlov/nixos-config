@@ -11,6 +11,7 @@
   simon.isStableSystem = false;
   simon.deployment-tools.enable = true;
   simon.gnome-paperwm.enable = true;
+  simon.prompt-styling.enable = true;
 
   home-manager.users.simon.dconf.settings."org/gnome/desktop/peripherals/touchpad".tap-to-click = lib.mkForce true;
 
