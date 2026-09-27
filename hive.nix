@@ -5,6 +5,7 @@
 
     nodeNixpkgs = {
       aibo = ./modules/nixpkgs-unstable;
+      michi = ./modules/nixpkgs-unstable;
     };
   };
 
@@ -19,6 +20,16 @@
     };
 
     imports = [ ./machines/aibo.nix ];
+  };
+
+  michi = { ... }: {
+
+    deployment = {
+      allowLocalDeployment = true;
+      targetHost = null;
+    };
+
+    imports = [ ./machines/michi.nix ];
   };
 
   kumo = { ... }: {
