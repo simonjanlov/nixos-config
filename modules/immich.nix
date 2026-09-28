@@ -16,6 +16,11 @@ in
 
   config = lib.mkIf cfg.enable
     {
+      ## TEMP
+      nixpkgs.config.permittedInsecurePackages = [
+        "immich-2.7.5"
+      ];
+
       services.immich = {
         enable = true;
         mediaLocation = "/srv/media/immich";
