@@ -15,7 +15,10 @@
   simon.gnome-paperwm.enable = true;
   simon.prompt-styling.enable = true;
 
-  simon.backups.paths = [ "/home/simon" ];
+  simon.backups.paths = [
+    "/home/simon"
+    "/etc/nixos"
+  ];
   simon.backups.exclude = [
     "/home/simon/.cache"
     "/home/simon/.mozilla"
