@@ -45,6 +45,7 @@
         "mealie-secrets".keyFile = "/etc/nixos/secrets/mealie-secrets-kumo";
         "nextcloud-admin-pw".keyFile = "/etc/nixos/secrets/nextcloud-admin-pw";
         "nextcloud-secrets".keyFile = "/etc/nixos/secrets/nextcloud-secrets-kumo";
+        "msmtp-secrets".keyFile = "/etc/nixos/secrets/msmtp-secrets-kumo";
       };
     };
 
